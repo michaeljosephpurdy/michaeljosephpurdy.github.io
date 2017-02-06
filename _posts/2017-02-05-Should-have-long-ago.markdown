@@ -2,7 +2,7 @@
 layout: post
 title:  "Should have long ago."
 date:   2017-02-05 19:59:54 -0500
-categories: jekyll update
+categories: blog 
 ---
 I don't know why it has taken me so long to set up this site.
 
