@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-02-08T21:51:07-05:00</updated><id>//</id><title type="html">Mike Purdy</title><subtitle>Marine.  Father.  Husband.  Programmer.  Aviation and motorcycle enthusiast.
+</subtitle><entry><title type="html">A nice Monday night</title><link href="/blog/ninja/2017/02/07/A-nice-Monday-night.html" rel="alternate" type="text/html" title="A nice Monday night" /><published>2017-02-07T19:00:00-05:00</published><updated>2017-02-07T19:00:00-05:00</updated><id>/blog/ninja/2017/02/07/A-nice-Monday-night</id><content type="html" xml:base="/blog/ninja/2017/02/07/A-nice-Monday-night.html">&lt;p&gt;Slowly, the ninja is coming together.&lt;/p&gt;
+
+&lt;p&gt;Let’s step back, though.&lt;/p&gt;
+
+&lt;p&gt;As a kid, I was fascinated with motorcycles.
+&lt;img src=&quot;/assets/images/bikes/ninja-naked-after-frame.jpg&quot; alt=&quot;The Ninja sitting naked without the tank&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bikes/ninja-tank-after-frame.jpg&quot; alt=&quot;The Ninja sitting naked with the tank&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bikes/ninja-with-new-license-plate.jpg&quot; alt=&quot;New license plate holder&quot; /&gt;&lt;/p&gt;</content><summary type="html">Slowly, the ninja is coming together.</summary></entry><entry><title type="html">Should have long ago.</title><link href="/blog/2017/02/05/Should-have-long-ago.html" rel="alternate" type="text/html" title="Should have long ago." /><published>2017-02-05T19:59:54-05:00</published><updated>2017-02-05T19:59:54-05:00</updated><id>/blog/2017/02/05/Should-have-long-ago</id><content type="html" xml:base="/blog/2017/02/05/Should-have-long-ago.html">&lt;p&gt;I don’t know why it has taken me so long to set up this site.&lt;/p&gt;
+
+&lt;p&gt;I purchased &lt;em&gt;purdy.tech&lt;/em&gt; back in October of 2016.
+Five months later, I have a page up.&lt;/p&gt;
+
+&lt;p&gt;Really, it’s a bit of a dis-service to myself, professionally, for me to not to have a website.
+Especially in todays day and age!
+Within hours; hell within &lt;a href=&quot;https://www.jekyllnow.com&quot; title=&quot;tutorial for building a static site fast&quot;&gt;minutes&lt;/a&gt; you could be up and running.&lt;/p&gt;
+
+&lt;p&gt;Granted, this isn’t some fancy, full-stack webapp.  Nor should it be.
+Using the proper tools for the job is always a top priority, right?
+I use a butter knife at times as a flathead, but only on my daughter’s sound machine.
+Regardless, writing some JAX backend for pumping messages out of a REST endpoint is fun, but way beyond the scope of this site.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@Path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/message&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@GET&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Produces&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/plain&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;poop&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;There will be none of this.&lt;/p&gt;
+
+&lt;p&gt;What this is, &lt;em&gt;however&lt;/em&gt; is a small place to write my thoughts.
+Maybe share any tech-findings and share my progress on the bike.&lt;/p&gt;</content><summary type="html">I don’t know why it has taken me so long to set up this site.</summary></entry></feed>
