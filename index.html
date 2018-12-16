@@ -1,140 +1,245 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Purdy - PICO-8</title>
-        <meta name="description" content="">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="NES.css is a NES-style CSS Framework." />
+    <meta name="keywords" content="html5,css,framework,sass,NES,8bit" />
+    <meta name="author" content="© 2018 B.C.Rikko" />
+    <link rel="shortcut icon" href="https://bcrikko.github.io/NES.css/favicon.ico" />
 
-<STYLE TYPE="text/css">
-<!--
+    <title>NES.css - NES-style CSS Framework</title>
+<link href="https://unpkg.com/nes.css@0.0.2/css/nes.min.css" rel="stylesheet" />
+    <link href="./css/nes.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
 
-canvas#canvas { width: 512px; height: 512px; }
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NES.css" />
+    <meta property="og:url" content="https://bcrikko.github.io/NES.css/" />
+    <meta property="og:description" content="NES-style CSS Framework | ??????CSS???????" />
+    <meta property="og:image" content="https://user-images.githubusercontent.com/5305599/49061716-da649680-f254-11e8-9a89-d95a7407ec6a.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bc_rikko" />
+    <meta name="twitter:creator" content="@bc_rikko" />
+    <meta name="twitter:image" content="https://user-images.githubusercontent.com/5305599/49061716-da649680-f254-11e8-9a89-d95a7407ec6a.png" />
 
-.pico8_el {
-	float:left;
-	width:92px;
-	display:inline-block; 
-  	margin: 1px;
-	padding: 4px;
-	text-align: center;
-	color:#fff;
-	background-color:#777;
-	font-family : verdana;
-	font-size: 9pt;
-	cursor: pointer;
-	cursor: hand;
-}
-.pico8_el a{
-	text-decoration: none;
-	color:#fff;
-}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41640153-4"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "UA-41640153-4");</script>
+  </head>
 
-.pico8_el:hover{
-	background-color:#aaa;
-}
+  <body>
+    <header>
+      <h1><i class="snes-jp-logo brand"></i>NES.css</h1>
+      <p>NES-style CSS Framework.</p>
+    </header>
 
-.pico8_el:link{
-	background-color:#aaa;
-}
+    <a class="github-link" href="https://github.com/BcRikko/NES.css" target="_blank">
+      <p class="balloon from-right">Fork me<br />on GitHub</p>
+      <i class="octocat"></i>
+    </a>
 
-canvas{
-    image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: optimize-contrast;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
-    border: 0px
-}
+    <section class="container with-title">
+      <h2 class="title">Buttons</h2>
+      <div>
+        <button type="button" class="btn">Normal</button>
+        <button type="button" class="btn is-primary">Primary</button>
+        <button type="button" class="btn is-success">Success</button>
+        <button type="button" class="btn is-warning">Warning</button>
+        <button type="button" class="btn is-error">Error</button>
+      </div>
+    </section>
 
--->
-</STYLE>
-    
-</head>
+    <section class="container with-title">
+      <h2 class="title">Containers</h2>
+      <div class="containers">
+        <div class="container with-title is-center">
+          <p class="title">Container.is-center</p>
+          <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+        </div>
+        <div class="container is-dark with-title">
+          <p class="title">Container.is-dark</p>
+          <p style="color: white;">Good morning. Thou hast had a good night's sleep, I hope.</p>
+        </div>
+        <div class="container is-rounded">
+          <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+        </div>
+        <div class="container is-rounded is-dark">
+          <p style="color: white;">Good morning. Thou hast had a good night's sleep, I hope.</p>
+        </div>
+      </div>
+    </section>
 
-<body bgcolor=#303030>
+    <section class="container with-title">
+      <h2 class="title">Radios</h2>
+      <div>
+        <label>
+          <input type="radio" class="radio" name="answer" checked />
+          <span>Yes</span>
+        </label>
+        <label>
+          <input type="radio" class="radio" name="answer" />
+          <span>No</span>
+        </label>
+      </div>
+    </section>
 
-	<br><br><br>
+    <section class="container with-title">
+      <h2 class="title">Checkboxes</h2>
+      <label>
+        <input type="checkbox" class="checkbox" checked />
+        <span>Enable</span>
+      </label>
+    </section>
 
-	<center><div style="width:512px;">
+    <section class="form container with-title">
+      <h2 class="title">Form</h2>
+      <div class="field">
+        <label for="name_field">Your name</label>
+        <input type="text" id="name_field" class="input">
+      </div>
+      <div class="field is-inline">
+        <label for="inline_field">.input.is-success</label>
+        <input type="text" id="inline_field" class="input is-success" placeholder="NES.css">
+      </div>
+      <div class="field is-inline">
+        <label for="warning_field">.input.is-warning</label>
+        <input type="text" id="warning_field" class="input is-warning" placeholder="8bit.css">
+      </div>
+      <div class="field is-inline">
+        <label for="error_field">.input.is-error</label>
+        <input type="text" id="error_field" class="input is-error" placeholder="awesome.css">
+      </div>
+    </section>
 
-	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    <section class="balloon container with-title">
+      <h2 class="title">Balloons</h2>
+      <div class="messages">
+        <div class="message -left">
+          <i class="bcrikko"></i>
+          <div class="balloon from-left">
+            <p>Hello NES.css</p>
+          </div>
+        </div>
+        <div class="message -right">
+          <div class="balloon from-right">
+            <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+          </div>
+          <i class="bcrikko"></i>
+        </div>
+      </div>
+    </section>
 
-	<script type="text/javascript">
-		var canvas = document.getElementById("canvas");
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
+    <section class="container with-title">
+      <h2 class="title">Table</h2>
+      <table class="table is-bordered is-centered" style="margin:15px 4px 5px 4px">
+        <thead>
+          <tr>
+            <th>Table</th>
+            <th>Table.is-bordered</th>
+            <th>Table.is-centered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Thou hast had a good morning</td>
+            <td>Thou hast had a good afternoon</td>
+            <td>Thou hast had a good night</td>
+          </tr>
+          <tr>
+            <td>Thou hast had a good morning</td>
+            <td>Thou hast had a good afternoon</td>
+            <td>Thou hast had a good night</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-		// show Emscripten environment where the canvas is
-		// arguments are passed to PICO-8
-		
-		var Module = {};
-		Module.canvas = canvas;
-		
-		/*
-			// When pico8_buttons is defined, PICO-8 takes each int to be a live bitfield
-			// representing the state of each player's buttons
-			
-			var pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0]; // max 8 players
-			pico8_buttons[0] = 2 | 16; // example: player 0, RIGHT and Z held down
-			
-			// when pico8_gpio is defined, reading and writing to gpio pins will
-			// read and write to these values
-			var pico8_gpio = new Array(128);
-		*/
-	</script>
+    <section class="container with-title">
+      <h2 class="title">Icons</h2>
+      <section class="container with-title">
+        <h3 class="title">Reaction</h3>
+        <div>
+          <i class="icon heart"></i>
+          <i class="icon heart is-medium"></i>
+          <i class="icon heart is-large"></i>
+          <i class="icon heart is-empty"></i>
 
-	<script async type="text/javascript" src="uhtred.js"></script>
-	  
-	<script>
-		// key blocker. prevent cursor keys from scrolling page while playing cart.
-		
-		function onKeyDown_blocker(event) {
-			event = event || window.event;
-			var o = document.activeElement;
-			if (!o || o == document.body || o.tagName == "canvas")
-			{
-				if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1)
-				{
-					if (event.preventDefault) event.preventDefault();
-				}
-			}
-		}
+          <i class="icon star"></i>
+          <i class="icon star is-medium"></i>
+          <i class="icon star is-large"></i>
+          <i class="icon star is-empty"></i>
 
-		document.addEventListener('keydown', onKeyDown_blocker, false);
+          <i class="icon like"></i>
+          <i class="icon like is-medium"></i>
+          <i class="icon like is-large"></i>
+          <i class="icon like is-empty"></i>
+        </div>
+      </section>
+      <section class="container with-title">
+        <h3 class="title">SNS</h3>
+        <div>
+          <i class="icon twitter"></i>
+          <i class="icon twitter is-medium"></i>
+          <i class="icon twitter is-large"></i>
 
-	</script>
-        
-	<br>
+          <i class="icon facebook"></i>
+          <i class="icon facebook is-medium"></i>
+          <i class="icon facebook is-large"></i>
 
-	<div class=pico8_el onclick="Module.pico8Reset();">
+          <i class="icon github"></i>
+          <i class="icon github is-medium"></i>
+          <i class="icon github is-large"></i>
 
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dOwoAMQhE15A+rfc/3bZ7AlMnQfywCkKsfcgMM9ZP+QHtIn0vLeBAFduiFdQ/0DmvtR5LXJ6CPSXe2ZXcFNlTxFbemKrbZPs35XogeS9xeQr+anT6LzoOwEDwZJ7jwhXUnwkTTiDQ2Ja34AAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Reset" width=12 height=	12/>
+          <i class="icon youtube"></i>
+          <i class="icon youtube is-medium"></i>
+          <i class="icon youtube is-large"></i>
+        </div>
+      </section>
 
-	Reset</div>
+      <section class="container with-title">
+        <h3 class="title">Others</h3>
+        <div>
+          <i class="icon close"></i>
+          <i class="icon close is-medium"></i>
+          <i class="icon close is-large"></i>
 
-	<div class=pico8_el onclick="Module.pico8TogglePaused();">
+          <i class="octocat animate"></i>
 
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAPUlEQVR4Ae3doQ0AIAxEUWABLPtPh2WCq26DwFSU/JPNT166QSu/Hg86W9dwLte+diP7AwAAAAAAgD+A+jM2ZAgo84I0PgAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Pause" width=12 height=12/>
+          <i class="icon trophy"></i>
+          <i class="icon trophy is-medium"></i>
+          <i class="icon trophy is-large"></i>
+        </div>
+      </section>
 
-	Pause</div>
-	<div class=pico8_el onclick="Module.requestFullScreen(true, false);">
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dsQ1AIQhExfze1v2ns3UCrfgFhmgUUAoGgHscp21wX9BqaZoDojbB96OkDJKNcTN2BHTyYNYmoT2BlPL7BKgcPfHjAVXKKadkHOn9K1r16N0czN6a95N8mnA7Aq2fTZ3Af3UKmCSMazL8HwAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Fullscreen" width=12 height=12/>
+      <section class="container with-title">
+        <h3 class="title">Controllers</h3>
+        <div>
+          <i class="nes-logo"></i>
+          <i class="nes-jp-logo"></i>
+          <i class="snes-logo"></i>
+          <i class="snes-jp-logo"></i>
+        </div>
+      </section>
+    </section>
 
-	Fullscreen</div>
-	<div class=pico8_el onclick="Module.pico8ToggleSound();">
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXklEQVR4Ae2doQ4AIQxD4YLH8v9fh+ULhjpxxSwLg2uyapr1JRu1iV5Z+1BGl4+xNpX38SYo2uRvYiT5LwEmt+ocgXVLrhPEgBiw8Q5w7/kueSkK+D2tJO4E/I3GrwkqQCBabEj/4QAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Toggle Sound" width=12 height=12/>
-	
-	Sound</div>
-	<div class=pico8_el ><a target="_new" href="http://www.lexaloffle.com/bbs/?cat=7&sub=2">
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAlElEQVR4Ae2dMQ5FQBCGh6jcwAkkateg3DiAa+iQUGqVKi95FQfAJRQOoHeBUf8JyQqKjZ1uMzuz2e/LTE3KhyF7kSlgLOykas23f6D+A9Yp84aAOYU15pcJnfji0Il2ID8HzC4y38ZrnfIBGxeRoR3c3EWrACdsV5BOsx7OSRnrOXh4F5HzA6bevwUn8wlz7eCDsQM99B3ks0s/4QAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="More Carts" width=12 height=12/>
 
-	Carts</a></div>
-
-	<br>	
-
-	</div></center>
-	<br><br>
-
-</body></html>
-
+    <footer class="footer">
+      <p>
+        <a href="https://kuroeveryday.blogspot.com/" target="_blank">Black Everyday Company</a>
+        <span>-</span>
+        <a href="https://twitter.com/bc_rikko" target="_blank">@bc_rikko</a>
+      </p>
+    </footer>
+  </body>
+  <script>
+    var link = document.querySelector("a.github-link");
+    var octocat = document.querySelector("a.github-link > i.octocat");
+    link.addEventListener("mouseover", function() {
+      octocat.classList.add("animate");
+    });
+    link.addEventListener("mouseout", function() {
+      octocat.classList.remove("animate");
+    });
+  </script>
+</html>
