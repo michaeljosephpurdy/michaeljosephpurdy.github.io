@@ -3,10 +3,21 @@
 		<head>
 			<title>{{ page.title }}</title>
 			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<link href="https://unpkg.com/nes.css@0.0.2/css/nes.min.css" rel="stylesheet" />
 		</head>
 		<body>
 			<nav>
+  <section class="nes-container with-title">
+      <h2 class="title">Buttons</h2>
+      <div>
+        <button type="button" class="nes-btn">Normal</button>
+        <button type="button" class="nes-btn is-primary">Primary</button>
+        <button type="button" class="nes-btn is-success">Success</button>
+        <button type="button" class="nes-btn is-warning">Warning</button>
+        <button type="button" class="nes-btn is-error">Error</button>
+        <button type="button" class="nes-btn is-disabled">Disabled</button>
+      </div>
+    </section>
 	    		<ul>
 	        		<li><a href="/">Home</a></li>
 		        	<li><a href="/about">About</a></li>
