@@ -3,19 +3,33 @@
 		<head>
 			<title>{{ page.title }}</title>
 			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/material.min.css">
-      <script src="/js/material.min.js"></script>
-			<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<link href="https://unpkg.com/nes.css@0.0.2/css/nes.min.css" rel="stylesheet" />
 		</head>
 		<body>
 			<nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-		        	<li><a href="/about">About</a></li>
-	        		<li><a href="/resume">Resume</a></li>
-	        		<li><a href="/blog">Blog</a></li>
-	        		<li><a href="/bikes">Bikes</a></li>
-	    		</u
+  <section class="nes-container with-title">
+      <h2 class="title"></h2>
+      <div>
+	        		<a href="/">
+        <button type="button" class="nes-btn">Home</button>
+</a>
+		        	<a href="/about">
+        <button type="button" class="nes-btn">About</button>
+</a>
+	        		<a href="/resume">
+        <button type="button" class="nes-btn">Resume</button>
+</a>
+	        		<a href="/blog">
+        <button type="button" class="nes-btn">Blog</button>
+</a>
+	        		<a href="/games">
+        <button type="button" class="nes-btn">Games</button>
+</a>
+	        		<a href="/bikes">
+        <button type="button" class="nes-btn">Bikes</button>
+</a>
+      </div>
+    </section>
 			</nav>
 			<div class="container">
 			
@@ -40,3 +54,4 @@
 			</footer>
 		</body>
 	</html>
+
