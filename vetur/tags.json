@@ -1,0 +1,44 @@
+{
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "LazyFooter": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "LazyHeader": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "LazyLogo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "Navigation": {
+    "description": "Auto imported from components/Navigation.vue"
+  },
+  "LazyNavigation": {
+    "description": "Auto imported from components/Navigation.vue"
+  },
+  "RandomThoughts": {
+    "description": "Auto imported from components/RandomThoughts.vue"
+  },
+  "LazyRandomThoughts": {
+    "description": "Auto imported from components/RandomThoughts.vue"
+  },
+  "EmphasizableText": {
+    "description": "Auto imported from components/atoms/EmphasizableText.vue"
+  },
+  "LazyEmphasizableText": {
+    "description": "Auto imported from components/atoms/EmphasizableText.vue"
+  },
+  "HeaderChoice": {
+    "description": "Auto imported from components/molecule/HeaderChoice.vue"
+  },
+  "LazyHeaderChoice": {
+    "description": "Auto imported from components/molecule/HeaderChoice.vue"
+  }
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/home/runner/work/michaeljosephpurdy.github.io/michaeljosephpurdy.github.io/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_13b3aa38"
+  },
+  {
+    "name": "games",
+    "path": "/games",
+    "component": "/home/runner/work/michaeljosephpurdy.github.io/michaeljosephpurdy.github.io/pages/games/index.vue",
+    "chunkName": "pages/games/index",
+    "_name": "_f70cd6ca"
+  },
+  {
+    "name": "games-lights-out",
+    "path": "/games/lights-out",
+    "component": "/home/runner/work/michaeljosephpurdy.github.io/michaeljosephpurdy.github.io/pages/games/lights-out.vue",
+    "chunkName": "pages/games/lights-out",
+    "_name": "_322733a5"
+  },
+  {
+    "name": "games-snake",
+    "path": "/games/snake",
+    "component": "/home/runner/work/michaeljosephpurdy.github.io/michaeljosephpurdy.github.io/pages/games/snake.vue",
+    "chunkName": "pages/games/snake",
+    "_name": "_8cb6e3ee"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/runner/work/michaeljosephpurdy.github.io/michaeljosephpurdy.github.io/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_15de05a9"
+  }
+]
