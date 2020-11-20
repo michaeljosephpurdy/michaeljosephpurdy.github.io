@@ -9,7 +9,8 @@ export default {
   head: {
     title: 'mikepurdy.dev',
     script: [
-      { src: 'https://kit.fontawesome.com/2e8af351a5.js' }
+      { src: 'https://kit.fontawesome.com/2e8af351a5.js' },
+      { src: 'https://www.googletagmanager.com/gtag/js?id=G-C4GZNTYBRF' },
     ],
     meta: [
       { charset: 'utf-8' },
@@ -42,6 +43,6 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-	publicPath: '/nuxt/'
+  	publicPath: '/nuxt/'
   }
 }
