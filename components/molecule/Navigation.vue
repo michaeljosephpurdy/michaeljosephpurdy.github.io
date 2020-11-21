@@ -17,7 +17,7 @@
 export default {
   methods: {
     route(_name) {
-      return this.$route.name.includes(_name)
+      return this.$route.path && this.$route.path.includes(_name)
     }
   }
 }

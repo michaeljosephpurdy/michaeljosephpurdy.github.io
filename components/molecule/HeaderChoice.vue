@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     selected() {
-      return this.$route.path.includes(this.$props.path)
+      return this.$route.path && this.$route.path.includes(this.$props.path)
     }
   }
 }
@@ -44,5 +44,9 @@ div {
 
   align-items: center;
   justify-content: center;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>

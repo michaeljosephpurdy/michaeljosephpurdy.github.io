@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <img src="/images/me.png" />
     <div class="about__statement">
       I am a software developer at Amazon.
     </div>

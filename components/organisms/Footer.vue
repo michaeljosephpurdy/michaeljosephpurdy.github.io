@@ -25,16 +25,18 @@
 
 <style lang="scss" scoped>
 .footer {
-  position: absolute;
+  position: fixed;
   left: 0;
-  bottom: .5rem;
+  bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  background-color: white;
+  padding: .75rem 0;
 
-  @media only screen and (min-width : 1000px), only screen and (orientation: landscape) {
+  @media only screen and (min-width : 1000px) {
     padding-left: 16rem;
     padding-right: 16rem;
   }
@@ -44,6 +46,8 @@
   }
 }
 a {
+  text-decoration: none;
+  color: black;
   font-size: 1.5rem;
 }
 </style>
