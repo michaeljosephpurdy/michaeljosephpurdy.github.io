@@ -24,7 +24,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 *,
@@ -34,19 +33,14 @@ html {
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
 .container {
   margin: 0;
   min-height: 100vh;
+  padding: 8.5rem 1rem 3.5rem 1rem;
+  
   display: flex;
-  margin-top: 15rem;
+
   align-items: center;
   text-align: center;
 }
-
-  
 </style>

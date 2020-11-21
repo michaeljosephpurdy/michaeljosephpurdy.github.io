@@ -1,22 +1,31 @@
 <template>
   <div class="game">
     <div>
-      lights out
+      lights out is a recreation a classic puzzle game played on a 5x5 grid of lights
     </div>
     <div>
-      get it on 
-      <a href="https://apps.apple.com/us/app/lights-out-game/id1538050760" target="_blank">
-        iOS <i class="fab fa-apple"></i>
-      </a>
-      and Android
-      <i class="fab fa-android"></i>
+      iOS users can download it now
     </div>
+    <div>
+      <AppStoreBadge link="https://apps.apple.com/us/app/lights-out-game/id1538050760" />
+    </div>
+    <div>
+      android users will need to wait for the next release
+    </div>
+    <!--
+    <GooglePlayBadge link="somewhere" />
+    -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-.game {
+div {
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
+
+  @media only screen and (min-width : 1000px) {
+    justify-content: center;
+  }
 }
 </style>

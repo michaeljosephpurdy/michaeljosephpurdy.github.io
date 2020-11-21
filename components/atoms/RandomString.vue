@@ -1,20 +1,23 @@
 <template>
   <div>
-    {{ fact }}
+    {{ str }}
   </div>
 </template>
 
 <script>
-const thoughts = [
-  ''
-]
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 export default {
+  props: {
+    strings: {
+      required: true,
+      type: Array,
+    }
+  },
   computed: {
-    fact() {
-      return thoughts[getRandomInt(facts.length)]
+    str() {
+      return strings[getRandomInt(strings.length)]
     }
   }
 }

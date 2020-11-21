@@ -39,12 +39,16 @@
     white-space: nowrap;
     letter-spacing: 1px;
   }
-  @media only screen and (min-width : 1000px), only screen and (orientation: landscape) {
+  @media only screen and (min-width : 1000px) {
     padding-left: 16rem;
     padding-right: 16rem;
   }
 }
 .fas {
   font-size: 2rem;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
