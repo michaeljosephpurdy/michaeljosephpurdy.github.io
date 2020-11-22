@@ -1,16 +1,16 @@
 <template>
   <div class="game">
     <div>
-      lights out is a recreation a classic puzzle game played on a 5x5 grid of lights
+      Lights out is a recreation a classic puzzle game played on a 5x5 grid of lights.
     </div>
     <div>
-      iOS users can download it now
+      iOS users can download it now:
     </div>
     <div>
       <AppStoreBadge link="https://apps.apple.com/us/app/lights-out-game/id1538050760" />
     </div>
     <div>
-      android users will need to wait for the next release
+      Android users will need to wait for the next release
     </div>
     <!--
     <GooglePlayBadge link="somewhere" />
