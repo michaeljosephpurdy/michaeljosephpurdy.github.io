@@ -3,7 +3,7 @@
     <div class="navigation">
       <HeaderChoice class="navigation__item" name="games" icon="fas fa-gamepad" path="/games" />
       <HeaderChoice class="navigation__item" name="about" icon="fas fa-user" path="/about" />
-      <HeaderChoice class="navigation__item" name="resume" icon="fas fa-file" path="/resume.pdf" external />
+      <HeaderChoice class="navigation__item" name="resume" icon="fas fa-file" path="/resume" />
     </div>
     <hr v-if="route('games')" >
     <div v-if="route('games')" class="navigation">
