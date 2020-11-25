@@ -8,6 +8,7 @@
 
 <style lang="scss" scoped>
 object {
+  padding: 7rem 0;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -12,9 +12,7 @@
     <div>
       Android users will need to wait for the next release
     </div>
-    <!--
-    <GooglePlayBadge link="somewhere" />
-    -->
+    <GooglePlayBadge link="https://play.google.com/store/apps/details?id=dev.purdy.lightsout" />
   </div>
 </template>
 
