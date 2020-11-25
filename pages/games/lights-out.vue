@@ -4,15 +4,11 @@
       Lights out is a recreation a classic puzzle game played on a 5x5 grid of lights.
     </div>
     <div>
-      iOS users can download it now:
+    <AppStoreBadge link="https://apps.apple.com/us/app/lights-out-game/id1538050760" />
     </div>
     <div>
-      <AppStoreBadge link="https://apps.apple.com/us/app/lights-out-game/id1538050760" />
-    </div>
-    <div>
-      Android users will need to wait for the next release
-    </div>
     <GooglePlayBadge link="https://play.google.com/store/apps/details?id=dev.purdy.lightsout" />
+    </div>
   </div>
 </template>
 
