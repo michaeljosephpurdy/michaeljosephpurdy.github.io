@@ -11,9 +11,6 @@
 
 <style lang="scss" scoped>
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
   margin-top: 1rem;
   margin-left: 1rem;
   text-align: left;

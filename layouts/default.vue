@@ -45,6 +45,7 @@ html {
   min-height: 100vh;
   padding: 1rem;
   padding-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
   
   --margin-top: 7.5rem;
   display: flex;

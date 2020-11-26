@@ -3,6 +3,7 @@
     <div>
       Snake clone implemented in PICO-8.
     </div>
+    <GameGif name="snake" />
     <a href="https://mikepurdy.dev/pico8games/snake.html">
       play it here
     </a>
