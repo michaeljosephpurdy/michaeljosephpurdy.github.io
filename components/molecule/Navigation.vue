@@ -5,11 +5,13 @@
       <HeaderChoice class="navigation__item" name="about" icon="fas fa-user" path="/about" />
       <HeaderChoice class="navigation__item" name="resume" icon="fas fa-file" path="/resume" />
     </div>
-    <hr v-if="route('games')" >
+    <!--
+      <hr v-if="route('games')" >
     <div v-if="route('games')" class="navigation">
       <HeaderChoice class="navigation__item" name="snake" icon="" path="/games/snake" />
       <HeaderChoice class="navigation__item" name="lightsout" icon="" path="/games/lights-out" />
     </div>
+    -->
   </div>
 </template>
 
