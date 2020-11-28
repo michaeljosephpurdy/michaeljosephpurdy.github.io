@@ -13,7 +13,7 @@
   gtag('config', 'G-C4GZNTYBRF');
 </script>
 
-<style lang="scss">
+<style>
 html {
   font-family:
     'Source Sans Pro',
@@ -33,7 +33,6 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 *,
@@ -49,7 +48,7 @@ html {
 }
 .container {
   display: flex;
-  flex: auto;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -57,7 +56,9 @@ html {
 
   margin: 0;
   padding: 1rem;
-  @media only screen and (min-width : 1000px) {
+}
+@media only screen and (min-width : 1000px) {
+  .container {
     padding-left: 18rem;
     padding-right: 18rem;
   }
@@ -68,8 +69,5 @@ a {
 }
 .footer {
   margin-top: auto;
-}
-div {
-  flex-shrink: 1;
 }
 </style>
