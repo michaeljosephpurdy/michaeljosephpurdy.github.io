@@ -1,8 +1,8 @@
 <template>
   <div class="app">
-    <Header />
-    <Nuxt class="container"/>
-    <Footer />
+    <Header class="header" />
+    <Nuxt class="container" />
+    <Footer class="footer" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@
   gtag('config', 'G-C4GZNTYBRF');
 </script>
 
-<style>
+<style lang="scss">
 html {
   font-family:
     'Source Sans Pro',
@@ -31,6 +31,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 *,
@@ -39,19 +42,34 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
-.container {
-  margin: 0;
-  min-height: 100vh;
-  padding: 1rem;
-  padding-bottom: 3.5rem;
-  margin-bottom: 3.5rem;
-  
-  --margin-top: 7.5rem;
+.app {
   display: flex;
-
+  flex-direction: column;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  flex: auto;
   justify-content: center;
   align-items: center;
   text-align: center;
+  display: inline-block;
+
+  margin: 0;
+  padding: 1rem;
+  @media only screen and (min-width : 1000px) {
+    padding-left: 18rem;
+    padding-right: 18rem;
+  }
+}
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+.footer {
+  margin-top: auto;
+}
+div {
+  flex-shrink: 1;
 }
 </style>

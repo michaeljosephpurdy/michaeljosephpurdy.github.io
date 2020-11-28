@@ -25,9 +25,6 @@
 
 <style lang="scss" scoped>
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -46,7 +43,6 @@
   }
 }
 a {
-  text-decoration: none;
   color: black;
   font-size: 1.5rem;
 }

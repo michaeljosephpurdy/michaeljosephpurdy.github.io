@@ -1,10 +1,8 @@
 <template>
-<a :href="`${name}`">
-  <div>
-    <GameGif class="gif" :name="name"/>
-    {{ name }}
-  </div>
-</a>
+<div>
+  <GameGif class="gif" :name="name" />
+  <SubHeaderText :text="name" style="font-size: 1rem;" />
+</div>
 </template>
 
 <script>
