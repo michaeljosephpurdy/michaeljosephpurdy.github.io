@@ -44,7 +44,7 @@ html {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 .container {
   display: flex;
@@ -68,6 +68,6 @@ a {
   color: black !important;
 }
 .footer {
-  margin-top: auto;
+  margin-top: auto !important;
 }
 </style>
