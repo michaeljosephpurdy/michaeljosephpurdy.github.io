@@ -45,8 +45,4 @@ div {
   align-items: center;
   justify-content: center;
 }
-a {
-  text-decoration: none;
-  color: black;
-}
 </style>

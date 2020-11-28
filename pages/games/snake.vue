@@ -1,11 +1,11 @@
 <template>
   <div class="game">
     <div>
-      Snake clone implemented in PICO-8.
+      A snake clone implemented in PICO-8.
     </div>
-    <GameGif name="snake" />
     <a href="https://mikepurdy.dev/pico8games/snake.html">
-      play it here
+      <GameGif name="snake" />
+      <SubHeaderText text="click to play" />
     </a>
   </div>
 </template>

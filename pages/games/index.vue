@@ -1,9 +1,17 @@
 <template>
 <div>
-  <GamePreview class="game" name="snake"/>
-  <hr>
-  <GamePreview class="game" name="lights-out"/>
-  <hr>
+  <div class="category">
+    <SubHeaderText class="category__sub-header" text="mobile" />
+    <a href="/games/lights-out">
+      <GamePreview class="category__item" name="lights-out"/>
+    </a>
+  </div>
+  <div class="category">
+    <SubHeaderText class="category__sub-header" text="desktop" />
+    <a href="/games/snake">
+      <GamePreview class="category__item" name="snake"/>
+    </a>
+  </div>
 </div>
 </template>
 
@@ -15,7 +23,11 @@ div {
     flex-direction: row;
   }
 }
-.game {
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 1rem;
 }
 </style>
