@@ -16,6 +16,11 @@
       </a>
     </div>
     <div class="footer__item">
+      <a href="https://purdy.itch.io/" >
+        <i class="fab fa-itch-io"></i>
+      </a>
+    </div>
+    <div class="footer__item">
       <a href="https://www.youtube.com/channel/UCf4UjDakDLZHOS4paM4ohwg">
         <i class="fab fa-youtube"></i>
       </a>
