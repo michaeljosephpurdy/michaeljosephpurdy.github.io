@@ -11,6 +11,11 @@
       </a>
     </div>
     <div class="footer__item">
+      <a href="https://www.twitter.com/actualmikepurdy/">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+    <div class="footer__item">
       <a href="https://github.com/michaeljosephpurdy/">
         <i class="fab fa-github"></i>
       </a>
