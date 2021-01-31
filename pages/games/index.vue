@@ -14,6 +14,9 @@
     <a href="/games/shave-me">
       <GamePreview class="category__item" name="shave-me"/>
     </a>
+    <a href="/games/lost-remote">
+      <GamePreview class="category__item" name="lost-remote"/>
+    </a>
   </div>
 </div>
 </template>
