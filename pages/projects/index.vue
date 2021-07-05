@@ -33,7 +33,6 @@ div {
   flex-direction: column;
   @media only screen and (min-width : 1000px) {
     flex-direction: row;
-    align-items: left;
   }
 }
 .category {
