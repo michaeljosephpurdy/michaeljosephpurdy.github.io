@@ -1,20 +1,26 @@
 <template>
 <div>
+  <!--
   <div class="category">
-    <SubHeaderText class="category__sub-header" text="mobile" />
-    <a href="/games/lights-out">
+    <SubHeaderText class="category__sub-header" text="software!" />
+    hi 
+  </div>
+  -->
+  <div class="category">
+    <SubHeaderText class="category__sub-header" text="mobile games" />
+    <a href="/projects/games/lights-out">
       <GamePreview class="category__item" name="lights-out"/>
     </a>
   </div>
   <div class="category">
-    <SubHeaderText class="category__sub-header" text="desktop" />
-    <a href="/games/snake">
+    <SubHeaderText class="category__sub-header" text="desktop games" />
+    <a href="/projects/games/snake">
       <GamePreview class="category__item" name="snake"/>
     </a>
-    <a href="/games/shave-me">
+    <a href="/projects/games/shave-me">
       <GamePreview class="category__item" name="shave-me"/>
     </a>
-    <a href="/games/lost-remote">
+    <a href="/projects/games/lost-remote">
       <GamePreview class="category__item" name="lost-remote"/>
     </a>
   </div>
@@ -35,5 +41,8 @@ div {
   align-items: center;
   justify-content: flex-start;
   padding: 1rem;
+  @media only screen and (min-width : 1000px) {
+    align-self: flex-start;
+  }
 }
 </style>
