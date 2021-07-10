@@ -13,7 +13,7 @@
     </a>
   </div>
   <div class="category">
-    <SubHeaderText class="category__sub-header" text="desktop games" />
+    <SubHeaderText class="category__sub-header" text="browser games" />
     <a href="/projects/games/snake">
       <GamePreview class="category__item" name="snake"/>
     </a>
