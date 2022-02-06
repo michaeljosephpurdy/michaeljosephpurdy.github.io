@@ -6,6 +6,9 @@
     <div>
       This was coded over a 12 day period for an internal gamejam at Amazon called Winter Jam 2020.
     </div>
+    <div>
+      I updated it in early 2022, fixing some bugs and adding a message speed option.
+    </div>
     <a href="https://mikepurdy.dev/pico8games/shave-me.html">
       <GameGif name="shave-me"/>
       <SubHeaderText text="click to play" />
