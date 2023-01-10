@@ -13,6 +13,12 @@
     </a>
   </div>
   <div class="category">
+    <SubHeaderText class="category__sub-header" text="desktop games" />
+    <a href="/projects/games/the-exhibit">
+      <GamePreview class="category__item" name="the-exhibit"/>
+    </a>
+  </div>
+  <div class="category">
     <SubHeaderText class="category__sub-header" text="browser games" />
     <a href="/projects/games/snake">
       <GamePreview class="category__item" name="snake"/>
