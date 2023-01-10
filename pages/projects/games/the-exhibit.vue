@@ -4,7 +4,7 @@
       My entry for <a href="https://itch.io/jam/secret-santa-jam-2022/">Secret Santa Jam - 2022</a>
     </div>
     <a href="https://itch.io/jam/secret-santa-jam-2022/rate/1848251">
-      <GameGif name="secret-santa-2022" />
+      <GameGif name="the-exhibit" />
     </a>
   </div>
 </template>
