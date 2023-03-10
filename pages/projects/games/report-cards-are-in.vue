@@ -8,7 +8,7 @@
     </div>
     <div>
       This was coded over a 7 day period for an internal gamejam at Amazon called Winter Jam 2023.
-      The them was 'Delay the Inevitable'.
+      The theme was 'Delay the Inevitable'.
     </div>
     <div>
     </div>
