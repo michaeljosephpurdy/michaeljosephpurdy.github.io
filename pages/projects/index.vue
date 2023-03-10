@@ -29,6 +29,9 @@
     <a href="/projects/games/lost-remote">
       <GamePreview class="category__item" name="lost-remote"/>
     </a>
+    <a href="/projects/games/report-cards-are-in">
+      <GamePreview class="category__item" name="report-cards-are-in"/>
+    </a>
   </div>
 </div>
 </template>
