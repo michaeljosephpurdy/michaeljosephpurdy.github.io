@@ -13,6 +13,8 @@
   "devDependencies": {
     "fibers": "^5.0.0",
     "sass": "^1.29.0",
-    "sass-loader": "^10.1.0"
+    "sass-loader": "^10.1.0",
+    "core-js": "^3.6.5",
+    "nuxt": "^2.14.6"
   }
 }
