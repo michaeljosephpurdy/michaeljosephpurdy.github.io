@@ -20,17 +20,20 @@
   </div>
   <div class="category">
     <SubHeaderText class="category__sub-header" text="browser games" />
-    <a href="/projects/games/snake">
-      <GamePreview class="category__item" name="snake"/>
+    <a href="/projects/games/no-lifeguard-on-duty">
+      <GamePreview class="category__item" name="no-lifeguard-on-duty"/>
     </a>
-    <a href="/projects/games/shave-me">
-      <GamePreview class="category__item" name="shave-me"/>
+    <a href="/projects/games/report-cards-are-in">
+      <GamePreview class="category__item" name="report-cards-are-in"/>
     </a>
     <a href="/projects/games/lost-remote">
       <GamePreview class="category__item" name="lost-remote"/>
     </a>
-    <a href="/projects/games/report-cards-are-in">
-      <GamePreview class="category__item" name="report-cards-are-in"/>
+    <a href="/projects/games/shave-me">
+      <GamePreview class="category__item" name="shave-me"/>
+    </a>
+    <a href="/projects/games/snake">
+      <GamePreview class="category__item" name="snake"/>
     </a>
   </div>
 </div>
