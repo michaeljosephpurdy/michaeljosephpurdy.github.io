@@ -9,7 +9,7 @@
     <div>
       The theme was "Your Life is Currency".
     </div>
-    <a href="https://mikepurdy.dev/sacrifice-and-atone/index.html">
+    <a href="https://mikepurdy.dev/sacrifice-and-atone">
       <GameGif name="sacrifice-and-atone"/>
       <SubHeaderText text="click to play" />
     </a>

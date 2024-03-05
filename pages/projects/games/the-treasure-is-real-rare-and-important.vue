@@ -9,7 +9,7 @@
     <div>
       The theme was "Unreliable Narriator", and there was an optional restriction of "1 Bit".
     </div>
-    <a href="https://mikepurdy.dev/pico8games/the-treasure-is-real-rare-and-important.html">
+    <a href="https://mikepurdy.dev/the-treasure-is-real-rare-and-important">
       <GameGif name="the-treasure-is-real-rare-and-important"/>
       <SubHeaderText text="click to play" />
     </a>
