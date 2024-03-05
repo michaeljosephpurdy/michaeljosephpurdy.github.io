@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer__item">
-      <a href="mailto:me@mikepurdy.dev">
+      <a href="mailto:MichaelJosephPurdy@gmail.com">
         <i class="far fa-envelope"></i>
       </a>
     </div>

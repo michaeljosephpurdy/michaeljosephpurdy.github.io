@@ -20,6 +20,12 @@
   </div>
   <div class="category">
     <SubHeaderText class="category__sub-header" text="browser games" />
+    <a href="/projects/games/sacrifice-and-atone">
+      <GamePreview class="category__item" name="sacrifice-and-atone"/>
+    </a>
+    <a href="/projects/games/the-treasure-is-real-rare-and-important">
+      <GamePreview class="category__item" displayName="the-treasure-is-real" name="the-treasure-is-real-rare-and-important"/>
+    </a>
     <a href="/projects/games/no-lifeguard-on-duty">
       <GamePreview class="category__item" name="no-lifeguard-on-duty"/>
     </a>
@@ -56,5 +62,6 @@ div {
   @media only screen and (min-width : 1000px) {
     align-self: flex-start;
   }
+  min-width: 10%;
 }
 </style>

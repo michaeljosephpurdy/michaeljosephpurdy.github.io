@@ -1,13 +1,17 @@
 <template>
 <div>
   <GameGif class="gif" :name="name" />
-  <SubHeaderText :text="name" style="font-size: 1rem;" />
+  <SubHeaderText :text="displayName || name" style="font-size: 1rem;" />
 </div>
 </template>
 
 <script>
 export default {
   props: {
+    displayName: {
+      required: false,
+      type: String,
+    },
     name: {
       required: true,
       type: String,
@@ -22,6 +26,8 @@ div {
   flex-direction: column;
 }
 .gif {
+  min-width: 100%;
   max-width: 10rem;
+  margin-top: 1rem;
 }
 </style>
