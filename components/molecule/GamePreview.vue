@@ -24,6 +24,10 @@ export default {
 div {
   display: flex;
   flex-direction: column;
+  filter: grayscale(1);
+  &:hover {
+    filter: grayscale(0);
+  }
 }
 .gif {
   min-width: 100%;
