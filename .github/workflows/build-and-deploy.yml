@@ -8,22 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          submodules: true
+          fetch-depth: 0
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'v0.139.3+extended+withdeploy'
-          extended: true
+          hugo-version: '0.119.0'
       - name: Build
-        run: hugo --minify --logLevel info
-        env:
-          HUGO_ENV: production
+        run: hugo --minify
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: deploy
           publish_dir: ./public
           cname: mikepurdy.dev

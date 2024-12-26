@@ -1,7 +1,7 @@
 baseURL = 'https://mikepurdy.dev'
 languageCode = 'en-us'
 title = 'mikepurdy.dev'
-theme='slick'
+theme = 'slick'
 copyright = 'Mike Purdy'
 enableEmoji = true
 
