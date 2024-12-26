@@ -1,0 +1,35 @@
+{
+	"version": "1",
+	"articles": [
+		{
+			"title": "news widget",
+			"date": "2023-01-10",
+			"image": "http://placekitten.com/g/400/600",
+			"segments": [
+				{
+					"text": "This is a new system that I've built to post updates on games that I'm building.  The idea is that each game I make will utilize the same news widget, which will help me keep anyone up to date with what I'm working on."
+				},
+				{
+					"text": "Here's a cat",
+					"image": "http://placekitten.com/g/400/400"
+				}
+			]
+		},
+		{
+			"title": "feedback widget",
+			"date": "2023-01-22",
+			"image": "http://placekitten.com/g/200/300",
+			"segments": [
+				{
+					"text": "Feedback widget will be a widget that does just that; allows folks to reach out and provide feedback"
+				},
+				{
+					"image": "http://placekitten.com/g/800/750"
+				},
+				{
+					"text": "Another cat"
+				}
+			]
+		}
+	]
+}

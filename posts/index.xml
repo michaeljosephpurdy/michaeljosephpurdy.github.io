@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on mikepurdy.dev</title><link>https://mikepurdy.dev/posts/</link><description>Recent content in Blog on mikepurdy.dev</description><generator>Hugo 0.119.0</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Moving to Hugo</title><link>https://mikepurdy.dev/posts/moving-to-hugo/</link><pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/moving-to-hugo/</guid><description>&lt;p>I&amp;rsquo;ve decided to ditch the previous framework of this site and onboard onto Hugo.&lt;/p>
+&lt;p>The hope with this move is that it will reduce the friction associated with creating &amp;lsquo;content&amp;rsquo;.&lt;/p>
+&lt;p>&amp;lsquo;Content&amp;rsquo; is a weird word with a lot of odd connotations.
+Does attempting to focus on creating &amp;lsquo;content&amp;rsquo; mean that I am now a &amp;lsquo;Content Creator&amp;rsquo;?
+That&amp;rsquo;s not really the goal.
+&lt;strong>The goal is to give myself a place to jot down my thoughts.&lt;/strong>&lt;/p>
+&lt;p>I do not have delusions that someone will actually be reading this.&lt;/p>
+&lt;h3 id="previous-site">Previous site&lt;/h3>
+&lt;p>I was previously using &lt;a href="https://nuxt.com">Nuxt&lt;/a>, which is a wrapper of sorts for Vue.
+At least I think it&amp;rsquo;s something like that.&lt;/p>
+&lt;p>Honestly, I don&amp;rsquo;t know much about it.
+I decided to use it because it was being used in freelancing project I was working on and it seemed like it would be a decent framework for a small static site.&lt;/p>
+&lt;p>I came across the idea of &amp;lsquo;Atomic Design&amp;rsquo;, which you can read more here: &lt;a href="https://atomicdesign.bradfrost.com">https://atomicdesign.bradfrost.com&lt;/a>.
+The idea is that you break down web components into their smallest pieces (atoms), and use those atoms to build larger components (molecules), and use those to build organisms, etc.&lt;/p>
+&lt;p>So in November of 2020 I pushed the initial commit (&lt;a href="https://github.com/michaeljosephpurdy/michaeljosephpurdy.github.io/commit/7e8143c676c59ed690d6e94173d4e0a03fbc87a7">7e8143&lt;/a>) of the Nuxt-powered site.&lt;/p>
+&lt;p>The site has served me well, giving me a place to host my games, resume, and links to other sites (mainly itch).&lt;/p>
+&lt;h3 id="future-plans">Future plans&lt;/h3>
+&lt;p>I want to try to write more, which is why I&amp;rsquo;ve shifted away from my custom-built solutions and onto something that is markdown-aware.
+I chose Hugo because I&amp;rsquo;ve used it previously (&lt;a href="https://childinclusionfund.com">Child Inclusion Fund&lt;/a>) and like some of the themes that I come across on &lt;a href="https://themes.gohugo.io">themes.gohugo.io&lt;/a>.
+Currently I am using &lt;a href="https://themes.gohugo.io/themes/slick/">Slick&lt;/a>, though I think I&amp;rsquo;ll eventually build my own to give me what I am fully looking for.&lt;/p>
+&lt;h4 id="games">Games&lt;/h4>
+&lt;p>Previously I was building web versions of each of my games and adding them into my website repo directly.
+This was a bit of a pain, but it did lead to my site actually hosting all of my web games instead of pointing to elsewhere; which was helpful for my son and his friends to play my games at their school.
+Unfortunately, the school went and blocked &lt;a href="https://mikepurdy.dev">mikepurdy.dev&lt;/a>, so the ROI of adding everything onto this site decreased.
+Instead, I plan on using itch.io&amp;rsquo;s widgets to link to individual games:&lt;/p>
+&lt;iframe frameborder="0" src="https://itch.io/embed/2830406" width="552" height="167">&lt;a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy&lt;/a>&lt;/iframe>
+&lt;h4 id="writings">Writings&lt;/h4>
+&lt;p>A lot of the games that I&amp;rsquo;ve made were for game jams internal to Amazon that myself and a few other folks setup.
+The jam structure is usually:&lt;/p>
+&lt;ul>
+&lt;li>Friday @ 3pm ET: A kickoff meeting where we announce the theme&lt;/li>
+&lt;li>Next Friday @ 3pm ET: Closing of submissions&lt;/li>
+&lt;li>Next Next Friday @ 3pm ET: A showcase meeting where each person/team talk about their game, answer questions, and we announce the winners.&lt;/li>
+&lt;/ul>
+&lt;p>I find that in each showcase meeting I am &lt;strong>eager&lt;/strong> to talk about the brainstorming phase, the end result, and everything in between.
+I&amp;rsquo;m hoping to channel that enthusiasm into this site, and jot down a bit about each game or maybe even low level technical decisions or implementations that I feel would would be good to talk about.&lt;/p>
+&lt;p>I&amp;rsquo;d like to blog about game development a bit.&lt;/p></description></item></channel></rss>
