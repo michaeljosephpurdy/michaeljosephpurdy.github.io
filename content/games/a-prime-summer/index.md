@@ -7,6 +7,6 @@ tags:
 title: A Prime Summer
 ---
 
-<iframe frameborder="0" src="https://itch.io/embed/2830406" width="552" height="167"><a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy</a></iframe>
+<iframe frameborder="0" src="https://itch.io/embed/2830406" class="itch-wrapper"><a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy</a></iframe>
 
 source: https://github.com/michaeljosephpurdy/2024-summer-game-jam

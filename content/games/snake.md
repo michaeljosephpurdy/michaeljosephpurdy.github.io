@@ -8,7 +8,7 @@ tags:
 
 Snake!
 
-<iframe frameborder="0" src="https://itch.io/embed/601567" width="552" height="167"><a href="https://purdy.itch.io/snake">Snake by mikepurdy</a></iframe>
+<iframe frameborder="0" src="https://itch.io/embed/601567" class="itch-wrapper"><a href="https://purdy.itch.io/snake">Snake by mikepurdy</a></iframe>
 
 lexaloffle: https://www.lexaloffle.com/bbs/?pid=70458#p
 

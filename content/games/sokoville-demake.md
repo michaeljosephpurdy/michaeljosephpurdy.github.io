@@ -5,7 +5,7 @@ title = 'Sokoville - demake'
 tags = ['lua', 'pico-8']
 +++
 
-<iframe frameborder="0" src="https://itch.io/embed/2946086" width="552" height="167"><a href="https://purdy.itch.io/sokoville-demake">Sokoville - demake by mikepurdy</a></iframe>
+<iframe frameborder="0" class="itch-wrapper" src="https://itch.io/embed/2946086"><a href="https://purdy.itch.io/sokoville-demake">Sokoville - demake by mikepurdy</a></iframe>
 
 lexaloffle: https://www.lexaloffle.com/bbs/?tid=144456
 

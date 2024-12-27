@@ -2,7 +2,7 @@
 title: "UFO Farm Attack"
 slug: ufo-farm-attack
 date: 2024-12-27T13:48:56-05:00
-tags: ["game idea"]
+tags: ["game idea", "ufo+farm"]
 ---
 ## The idea
 Here's a game idea that I've been toying around with.
@@ -11,7 +11,7 @@ You own a farm
 
 **Wait**! It's not _that_ kind of game!
 
-You own a farm and your job, and you get money each morning for each animal that spent the night in the barn, coop, shed, etc.
+You own a farm and you get money each morning for each animal that spent the night in the barn, coop, shed, etc.
 Something like: $2 per chicken (sell eggs), $10 per cow (sell milks), etc.
 Sounds easy enough - BUT!
 

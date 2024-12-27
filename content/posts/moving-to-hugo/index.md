@@ -43,7 +43,7 @@ This was a bit of a pain, but it did lead to my site actually hosting all of my 
 Unfortunately, the school went and blocked [mikepurdy.dev](https://mikepurdy.dev), so the ROI of adding everything onto this site decreased.
 Instead, I plan on using itch.io's widgets to link to individual games:
 
-<iframe frameborder="0" src="https://itch.io/embed/2830406" width="552" height="167"><a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy</a></iframe>
+<iframe frameborder="0" src="https://itch.io/embed/2830406" class="itch-wrapper"><a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy</a></iframe>
 
 
 #### Writings

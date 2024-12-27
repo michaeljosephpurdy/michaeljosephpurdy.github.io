@@ -8,11 +8,12 @@ enableEmoji = true
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]
-            unsafe = true               # Allow html (needed for some shortcodes)
+            unsafe = true              # Allow html (needed for some shortcodes)
     [markup.highlight]
-        codeFences = true               # Enable highlighting inside codefences
-        guessSyntax = true              # Highlight code without language tag
-        noClasses = false               # Use the theme's style sheet
+        codeFences = true              # Enable highlighting inside codefences
+        guessSyntax = true             # Highlight code without language tag
+        noClasses = true               # Use the theme's style sheet
+        style = 'rose-pine-dawn'
 
 canonifyURLs = true
 
@@ -23,10 +24,10 @@ canonifyURLs = true
 
 [params]
     # Site subtitle (not shown if commented out or set to false)
-    #subtitle = "Showcase page"
+    # subtitle = "Showcase page"
 
     # Site description
-    description = "My personal site"
+    # description = "My personal site"
 
     # Favicon file (relative to baseURL - place in assets folder)
     favicon = "favicon.ico"
@@ -85,7 +86,7 @@ canonifyURLs = true
     # See "head.html" partial on how to include them
     [params.custom]
         #script = "custom.js"
-        #style = "custom.css"
+        style = "custom.css"
 
 
 # Define all supported taxonomies (add series to the default)
@@ -99,73 +100,42 @@ canonifyURLs = true
     #limit = 0
 
 [menu]
-    # Configure main menu entries (header)
-    # Currently set to list all taxonomies and posts
+    # header
     [[menu.main]]
         identifier = "game"
         name = "games"
         title = "all games"
         pageref = "/games"
         weight = 1
-
     [[menu.main]]
         identifier = "post"
         name = "blog"
         title = "Blog"
         pageref = "/posts"
         weight = 2
-
     [[menu.main]]
         identifier = "tags"
         name = "tags"
         title = "All tags"
         pageref = "/tags"
         weight = 3
-
     [[menu.main]]
         identifier = "resume"
         name = "resume"
         title = "Resume"
         url = "https://mikepurdy.dev/resume.pdf"
         weight = 4
-
-    #[[menu.main]]
-        #identifier = "series"
-        #name = "Series"
-        #title = "All series"
-        #pageref = "/series"
-        #weight = 2
-
-
-    # Define the entries for post metadata
-    # Identifiers should match with the taxonomy entries
-    [[menu.meta]]
-        identifier = "categories"
-        name = "Categories"
-        weight = 1
-    #[[menu.meta]]
-        #identifier = "series"
-        #name = "Series"
-        #weight = 2
-    [[menu.meta]]
-        identifier = "tags"
-        name = "Tags"
-        weight = 3
-
-
-    # Add some footer links to your likings
+    # footer
     [[menu.footer]]
         name = "github"
         title = "repo"
         url = "https://github.com/michaeljosephpurdy"
         weight = 1
-
     [[menu.footer]]
         name = "itch.io"
         title = "itch.io"
         url = "https://purdy.itch.io"
         weight = 3
-
 
 # Enable generation of robots.txt
 enableRobotsTXT = true
@@ -174,7 +144,7 @@ enableRobotsTXT = true
 [sitemap]
   # Values are 'always', 'hourly', 'daily',' weekly', 'monthly', 'yearly',
   # and 'never'. Set to empty string to omit inclusion
-  changefreq = "monthly"
+  changefreq = "weekly"
   # Adjust filename of sitemap. (default: sitemap.xml)
   filename = "sitemap.xml"
   # Values range from 0.0 to 1.0. Set to -1 to omit inclusion
