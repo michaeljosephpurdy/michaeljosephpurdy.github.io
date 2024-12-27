@@ -2,7 +2,7 @@
 &lt;p>Here&amp;rsquo;s a game idea that I&amp;rsquo;ve been toying around with.&lt;/p>
 &lt;p>You own a farm&lt;/p>
 &lt;p>&lt;strong>Wait&lt;/strong>! It&amp;rsquo;s not &lt;em>that&lt;/em> kind of game!&lt;/p>
-&lt;p>You own a farm and your job, and you get money each morning for each animal that spent the night in the barn, coop, shed, etc.
+&lt;p>You own a farm and you get money each morning for each animal that spent the night in the barn, coop, shed, etc.
 Something like: $2 per chicken (sell eggs), $10 per cow (sell milks), etc.
 Sounds easy enough - BUT!&lt;/p>
 &lt;p>&lt;strong>There are UFOs all over the farm.&lt;/strong>&lt;/p>
@@ -17,15 +17,15 @@ UFOs can also transport aliens onto the map that will disassemble them.
 This is to avoid covering the whole map with roofed structures.&lt;/p>
 &lt;h2 id="movement">Movement&lt;/h2>
 &lt;p>Likely a top down game, I&amp;rsquo;m thinking of trying to keep controls to d-pad and two buttons&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">8-way directional movement
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">A Button - confirm
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">A Button - for picking up small animals, like chickens.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">A Button - attach teather to larget animals.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">B Button - cancel
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">B Button - put down animal
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">B Button - release lasso
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>8-way directional movement
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A Button - confirm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A Button - for picking up small animals, like chickens.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A Button - attach teather to larget animals.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B Button - cancel
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B Button - put down animal
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B Button - release lasso
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="details">Details&lt;/h2>
 &lt;h3 id="animals">Animals&lt;/h3>
 &lt;ul>
@@ -78,7 +78,7 @@ Currently I am using &lt;a href="https://themes.gohugo.io/themes/slick/">Slick&l
 This was a bit of a pain, but it did lead to my site actually hosting all of my web games instead of pointing to elsewhere; which was helpful for my son and his friends to play my games at their school.
 Unfortunately, the school went and blocked &lt;a href="https://mikepurdy.dev">mikepurdy.dev&lt;/a>, so the ROI of adding everything onto this site decreased.
 Instead, I plan on using itch.io&amp;rsquo;s widgets to link to individual games:&lt;/p>
-&lt;iframe frameborder="0" src="https://itch.io/embed/2830406" width="552" height="167">&lt;a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy&lt;/a>&lt;/iframe>
+&lt;iframe frameborder="0" src="https://itch.io/embed/2830406" class="itch-wrapper">&lt;a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy&lt;/a>&lt;/iframe>
 &lt;h4 id="writings">Writings&lt;/h4>
 &lt;p>A lot of the games that I&amp;rsquo;ve made were for game jams internal to Amazon that myself and a few other folks setup.
 The jam structure is usually:&lt;/p>

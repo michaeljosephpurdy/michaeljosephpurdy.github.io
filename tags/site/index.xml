@@ -23,7 +23,7 @@ Currently I am using &lt;a href="https://themes.gohugo.io/themes/slick/">Slick&l
 This was a bit of a pain, but it did lead to my site actually hosting all of my web games instead of pointing to elsewhere; which was helpful for my son and his friends to play my games at their school.
 Unfortunately, the school went and blocked &lt;a href="https://mikepurdy.dev">mikepurdy.dev&lt;/a>, so the ROI of adding everything onto this site decreased.
 Instead, I plan on using itch.io&amp;rsquo;s widgets to link to individual games:&lt;/p>
-&lt;iframe frameborder="0" src="https://itch.io/embed/2830406" width="552" height="167">&lt;a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy&lt;/a>&lt;/iframe>
+&lt;iframe frameborder="0" src="https://itch.io/embed/2830406" class="itch-wrapper">&lt;a href="https://purdy.itch.io/2024-summer-game-jam">A Prime Summer by mikepurdy&lt;/a>&lt;/iframe>
 &lt;h4 id="writings">Writings&lt;/h4>
 &lt;p>A lot of the games that I&amp;rsquo;ve made were for game jams internal to Amazon that myself and a few other folks setup.
 The jam structure is usually:&lt;/p>
