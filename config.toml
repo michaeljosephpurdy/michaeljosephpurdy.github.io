@@ -124,6 +124,7 @@ canonifyURLs = true
         name = "resume"
         title = "Resume"
         url = "https://mikepurdy.dev/resume.pdf"
+        params.target="_blank"
         weight = 4
     # footer
     [[menu.footer]]
