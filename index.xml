@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>mikepurdy.dev</title><link>https://mikepurdy.dev/</link><description>Recent content on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Fri, 27 Dec 2024 13:48:56 -0500</lastBuildDate><atom:link href="https://mikepurdy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>UFO Farm Attack</title><link>https://mikepurdy.dev/posts/ufo-farm-attack/</link><pubDate>Fri, 27 Dec 2024 13:48:56 -0500</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/ufo-farm-attack/</guid><description>&lt;h2 id="the-idea">The idea&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>mikepurdy.dev</title><link>https://mikepurdy.dev/</link><description>Recent content on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 02</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-2/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-2/</guid><description>&lt;p>&lt;code>Lua&lt;/code> is my weapon of choice for most game development which I end up pairing with &lt;a href="https://lexaloffle.com">pico-8&lt;/a> or &lt;a href="https://love2d.org">love-2d&lt;/a>.
+I love how fast and dirty I can be with &lt;code>Lua&lt;/code>, but man does that sometimes the lack of type-safety bites me in the butt.
+To remedy this, I try to set myself up for success by getting soe me type-safety via &lt;a href="https://luals.github.io/">lua language server&lt;/a> and it&amp;rsquo;s &lt;a href="https://luals.github.io/wiki/annotations/">annotations&lt;/a>.&lt;/p>
+&lt;p>I&amp;rsquo;m still trying to figure out how I best like working with love-2d.
+For a few of my projects I&amp;rsquo;ve used an &lt;a href="https://en.wikipedia.org/wiki/Entity_component_system">Entity Component System&lt;/a> approach via &lt;a href="https://github.com/bakpakin/tiny-ecs/tree/master">tiny-ecs&lt;/a>.
+That&amp;rsquo;s what I&amp;rsquo;m using for &lt;strong>Sundog&lt;/strong>.&lt;/p>
+&lt;p>This is what I&amp;rsquo;ve got so far:
+&lt;img src="./basic-setup.gif" alt="basic setup">&lt;/p>
+&lt;p>All keys on the right of the keybaord map to &amp;lsquo;right&amp;rsquo; and all on the left map to &amp;rsquo;left&amp;rsquo;.
+Jumping works like in &lt;strong>Mooncat&lt;/strong>, where if you&amp;rsquo;re going right and then hit left you will jump.&lt;/p>
+&lt;p>It&amp;rsquo;s still very janky but figured I&amp;rsquo;d post what I have here.&lt;/p>
+&lt;hr>
+&lt;p>Levels are built in &lt;a href="https://ldtk.io">LDtk&lt;/a>.&lt;/p>
+&lt;p>source: &lt;a href="https://github.com/michaeljosephpurdy/eggplant-jam-25">https://github.com/michaeljosephpurdy/eggplant-jam-25&lt;/a>&lt;/p></description></item><item><title>Sundog - Devlog - 01</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-1/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-1/</guid><description>&lt;p>I love &lt;a href="https://eggplant.show">eggplant podcast&lt;/a>.&lt;/p>
+&lt;p>I&amp;rsquo;ve been listening to it for a long time, and have spent hours listening to it while running.&lt;/p>
+&lt;p>I participate in a lot of game jams, but most of them have been through the internal game jams that myself and some other folks at Amazon put together.&lt;/p>
+&lt;p>As I was lurking around the &lt;a href="https://discord.gg/eggplant">eggplant discord&lt;/a> and noticed that the &lt;a href="https://itch.io/jam/eggjam-25">Eggplant Game Jam #25&lt;/a> started a little bit ago.
+Running from 10 JAN - 11 FEB, the idea is to take inspiration from a slew of &lt;a href="https://50games.fun">UFO-50&lt;/a> games and make a fun project.&lt;/p>
+&lt;p>The list of games that the jam is targeting is:&lt;/p>
+&lt;ul>
+&lt;li>Devilition&lt;/li>
+&lt;li>Kick Club&lt;/li>
+&lt;li>&lt;strong>Avianos&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Mooncat&lt;/strong>&lt;/li>
+&lt;li>Bushido Ball&lt;/li>
+&lt;li>Block Koala&lt;/li>
+&lt;li>Camouflage&lt;/li>
+&lt;li>Campanella&lt;/li>
+&lt;li>Golfaria&lt;/li>
+&lt;li>The Big Bell Race&lt;/li>
+&lt;li>Warptank&lt;/li>
+&lt;li>Waldorf&amp;rsquo;s Journey&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>I really liked &lt;strong>Mooncat&lt;/strong> and thought of making a game that takes heavy inspiration from it&amp;rsquo;s controls.&lt;/p>
+&lt;p>I don&amp;rsquo;t really remember when or how I thought of it, but I thought of &lt;strong>Sundog&lt;/strong> would be a cool name for a game since it flips &lt;em>moon&lt;/em> and &lt;em>cat&lt;/em>.&lt;/p>
+&lt;p>The idea is, you&amp;rsquo;re a hotdog, escaping a hotdog cart.
+The controls are like &lt;strong>Mooncat&lt;/strong>, where inputs on the right make your character go right, and the inputs on the left make them go left.&lt;/p>
+&lt;p>I voiced the plan on Discord, and &lt;code>epiblitikos&lt;/code> came up with this great idea:
+&amp;ldquo;For some reason this hot dog wants to go to the beach: hence sundog&amp;rdquo;&lt;/p>
+&lt;p>I &lt;strong>love&lt;/strong> this idea.&lt;/p>
+&lt;p>I think the &amp;lsquo;some reason&amp;rsquo; will be a love interest (classic), and will be a cheeseburger, a hotdog, or some other type of fast food.&lt;/p>
+&lt;p>I&amp;rsquo;m thinking through a bit of a twist at the end, but don&amp;rsquo;t want to share it here.&lt;/p></description></item><item><title>UFO Farm Attack</title><link>https://mikepurdy.dev/posts/ufo-farm-attack/</link><pubDate>Fri, 27 Dec 2024 13:48:56 -0500</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/ufo-farm-attack/</guid><description>&lt;h2 id="the-idea">The idea&lt;/h2>
 &lt;p>Here&amp;rsquo;s a game idea that I&amp;rsquo;ve been toying around with.&lt;/p>
 &lt;p>You own a farm&lt;/p>
 &lt;p>&lt;strong>Wait&lt;/strong>! It&amp;rsquo;s not &lt;em>that&lt;/em> kind of game!&lt;/p>
