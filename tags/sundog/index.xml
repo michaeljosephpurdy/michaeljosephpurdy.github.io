@@ -1,16 +1,108 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sundog on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/sundog/</link><description>Recent content in Sundog on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/sundog/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 02</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-2/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-2/</guid><description>&lt;p>&lt;code>Lua&lt;/code> is my weapon of choice for most game development which I end up pairing with &lt;a href="https://lexaloffle.com">pico-8&lt;/a> or &lt;a href="https://love2d.org">love-2d&lt;/a>.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sundog on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/sundog/</link><description>Recent content in Sundog on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/sundog/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 02</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-2/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-2/</guid><description>&lt;h2 id="the-basics">The Basics&lt;/h2>
+&lt;p>&lt;code>Lua&lt;/code> is my weapon of choice for most game development which I end up pairing with &lt;a href="https://lexaloffle.com">pico-8&lt;/a> or &lt;a href="https://love2d.org">love-2d&lt;/a>.
 I love how fast and dirty I can be with &lt;code>Lua&lt;/code>, but man does that sometimes the lack of type-safety bites me in the butt.
 To remedy this, I try to set myself up for success by getting soe me type-safety via &lt;a href="https://luals.github.io/">lua language server&lt;/a> and it&amp;rsquo;s &lt;a href="https://luals.github.io/wiki/annotations/">annotations&lt;/a>.&lt;/p>
 &lt;p>I&amp;rsquo;m still trying to figure out how I best like working with love-2d.
 For a few of my projects I&amp;rsquo;ve used an &lt;a href="https://en.wikipedia.org/wiki/Entity_component_system">Entity Component System&lt;/a> approach via &lt;a href="https://github.com/bakpakin/tiny-ecs/tree/master">tiny-ecs&lt;/a>.
 That&amp;rsquo;s what I&amp;rsquo;m using for &lt;strong>Sundog&lt;/strong>.&lt;/p>
 &lt;p>This is what I&amp;rsquo;ve got so far:
-&lt;img src="./basic-setup.gif" alt="basic setup">&lt;/p>
+&lt;img src="basic-setup.gif" alt="basic setup">&lt;/p>
 &lt;p>All keys on the right of the keybaord map to &amp;lsquo;right&amp;rsquo; and all on the left map to &amp;rsquo;left&amp;rsquo;.
 Jumping works like in &lt;strong>Mooncat&lt;/strong>, where if you&amp;rsquo;re going right and then hit left you will jump.&lt;/p>
 &lt;p>It&amp;rsquo;s still very janky but figured I&amp;rsquo;d post what I have here.&lt;/p>
 &lt;hr>
-&lt;p>Levels are built in &lt;a href="https://ldtk.io">LDtk&lt;/a>.&lt;/p>
+&lt;h2 id="level-transitions">Level Transitions&lt;/h2>
+&lt;p>I have the level transitions working now.&lt;/p>
+&lt;p>Here is what that looks like:
+&lt;img src="transition.gif" alt="transition">&lt;/p>
+&lt;p>How this works is, in &lt;a href="https://ldtk.io">LDtk&lt;/a> I have &lt;code>PLAYER_SPAWN&lt;/code> entities and &lt;code>LEVEL_EXIT&lt;/code> entities.
+&lt;code>LEVEL_EXIT&lt;/code> entities are linked to &lt;code>PLAYER_SPAWN&lt;/code> entities in other levels.&lt;/p>
+&lt;p>So, I have &lt;em>Level_0&lt;/em> setup below, which has a &lt;code>PLAYER_SPAWN&lt;/code> entity and a &lt;code>LEVEL_EXIT&lt;/code> entity.&lt;/p>
+&lt;h3 id="spawning-the-player">Spawning the player&lt;/h3>
+&lt;p>When &lt;code>PLAYER_SPAWN&lt;/code> entities are parsed from LDtk levels, they have a &lt;code>player_spawn&lt;/code> component and a &lt;code>position&lt;/code> component:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">player_spawn&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#286983">true&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">position&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">vector&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">x&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">y&lt;/span>&lt;span style="color:#797593">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There is then a &lt;code>PlayerSpawningSystem&lt;/code> that processes all entities with &lt;code>player_spawn&lt;/code> and &lt;code>position&lt;/code> components.
+When a player spawn is added to the system, it will:&lt;/p>
+&lt;ul>
+&lt;li>check if a player is already present
+&lt;ul>
+&lt;li>if not, make a player entity&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>set the player entity &lt;code>position&lt;/code> component to the player spawn &lt;code>position&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9893a5">---@param e PlayerSpawn | Position&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">PlayerSpawningSystem&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">onAdd&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#797593">not&lt;/span> &lt;span style="color:#d7827e">self.player&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">self.player&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">self.entity_factory&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">build&lt;/span>&lt;span style="color:#797593">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">id&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;PLAYER&amp;#39;&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#797593">})[&lt;/span>&lt;span style="color:#ea9d34">1&lt;/span>&lt;span style="color:#797593">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">self.player&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">position&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">e.position&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">clone&lt;/span>&lt;span style="color:#797593">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">self.world&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">addEntity&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">self.player&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="level-exit">Level exit&lt;/h3>
+&lt;p>When &lt;code>LEVEL_EXIT&lt;/code> entities are parsed from LDtk, they look like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">is_level_exit&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#286983">true&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">drawable&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">{&lt;/span> &lt;span style="color:#d7827e">sprite&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">love.graphics&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">newImage&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#ea9d34">&amp;#39;assets/exit.png&amp;#39;&lt;/span>&lt;span style="color:#797593">)&lt;/span> &lt;span style="color:#797593">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">collidable&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">{&lt;/span> &lt;span style="color:#d7827e">radius&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">16&lt;/span> &lt;span style="color:#797593">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">trigger&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">{},&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">position&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">vector&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">x&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">y&lt;/span>&lt;span style="color:#797593">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">linked_level_id&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;Level_1&amp;#39;&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>When a collision is processed between the player the following is added to the world:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">entity_transition_event&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">transition_time&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">1&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">fade_out&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#286983">true&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">level_to_load&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">level_exit.linked_level_id&lt;/span>&lt;span style="color:#797593">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#797593">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#797593">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>ScreenTransitionSystem&lt;/code> processes entities with the &lt;code>entity_transition_event&lt;/code> component.&lt;/p>
+&lt;p>It will:&lt;/p>
+&lt;ul>
+&lt;li>draw a black rectangle on the screen with changing value for alpha
+&lt;ul>
+&lt;li>alpha value increases for &lt;code>fade_out&lt;/code> events&lt;/li>
+&lt;li>alpha value decreases for &lt;code>fade_in&lt;/code> events&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>if &lt;code>level_to_load&lt;/code> is present and &lt;code>fade_out&lt;/code> event is done, it will:
+&lt;ul>
+&lt;li>clear all entities from the world&lt;/li>
+&lt;li>add a &lt;code>load_tile_map&lt;/code> event for the &lt;code>level_to_load&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>ScreenTransitionSystem&lt;/code> has a function that runs whenever an entity that it is processing is removed.
+It uses this as a hook create the corresponding &lt;code>fade_in&lt;/code> event for the &lt;code>fade_out&lt;/code> event that was removed (when removing all entities)&lt;/p>
+&lt;p>There is a system that listens to &lt;code>load_tile_map&lt;/code>, it loads and parses levels from LDtk.
+All of the entities in the new level will be added to the system, including the &lt;code>PLAYER_SPAWN&lt;/code> event.
+The &lt;code>PlayerSpawningSystem&lt;/code> I talked about before will move the player to position of the new player spawn event.&lt;/p>
+&lt;h3 id="putting-it-all-together">Putting it all together&lt;/h3>
+&lt;ol>
+&lt;li>player collides with &lt;code>is_level_exit&lt;/code>&lt;/li>
+&lt;li>a &lt;code>fade_out&lt;/code> screen transition event is created, which contains the &lt;code>level_to_load&lt;/code> from the level exit entity&lt;/li>
+&lt;li>the screen starts fading out to black&lt;/li>
+&lt;li>when the fade out is complete, all entities are removed the world&lt;/li>
+&lt;li>a &lt;code>load_tile_map&lt;/code> event is created, pointing to &lt;code>level_to_load&lt;/code>&lt;/li>
+&lt;li>player spawn is added
+a. the player that was removed in step 4 is added back into the world
+b. player position is updated to player spawn position&lt;/li>
+&lt;li>a &lt;code>fade_in&lt;/code> screen transition event is created&lt;/li>
+&lt;li>screen starts fading in from black&lt;/li>
+&lt;li>when the fade in is complete, the &lt;code>fade_in&lt;/code> even its removed.&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>Phew.
+It seems like a lot going on in a few different places, and I guess it is.
+It feels that way when typing it all out.
+I think the benefit of ECS is that the code is simple to read since it&amp;rsquo;s all in well defined systems.
+I&amp;rsquo;m getting the sneaking suspicion though that this cost-savings will end up costing me in the future, as &lt;em>remembering&lt;/em> the system-to-system interaction is where the complexity really lives within ECS-backed games.&lt;/p>
 &lt;p>source: &lt;a href="https://github.com/michaeljosephpurdy/eggplant-jam-25">https://github.com/michaeljosephpurdy/eggplant-jam-25&lt;/a>&lt;/p></description></item><item><title>Sundog - Devlog - 01</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-1/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-1/</guid><description>&lt;p>I love &lt;a href="https://eggplant.show">eggplant podcast&lt;/a>.&lt;/p>
 &lt;p>I&amp;rsquo;ve been listening to it for a long time, and have spent hours listening to it while running.&lt;/p>
 &lt;p>I participate in a lot of game jams, but most of them have been through the internal game jams that myself and some other folks at Amazon put together.&lt;/p>
