@@ -135,4 +135,15 @@ It feels that way when typing it all out.
 I think the benefit of ECS is that the code is simple to read since it's all in well defined systems.
 I'm getting the sneaking suspicion though that this cost-savings will end up costing me in the future, as _remembering_ the system-to-system interaction is where the complexity really lives within ECS-backed games.
 
+---
+
+### Reuse
+
+A nice thing here is to handle restarts if the player falls out of the level, we can reuse all of the above to get the player to respawn right where they were.
+
+When levels are loaded from `LDtk`, the level's top-left coordinates, along with the level's bottom-right coordinates, are stored.
+We check the players position against these boundaries, and if the player is out of bounds we trigger the same screen transition flow, only with the current level id.
+
+![respawn](respawn.gif)
+
 source: https://github.com/michaeljosephpurdy/eggplant-jam-25
