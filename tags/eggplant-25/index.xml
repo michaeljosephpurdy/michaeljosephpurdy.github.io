@@ -23,7 +23,6 @@ I found &lt;a href="https://steamcommunity.com/sharedfiles/filedetails/?id=33340
 It sounds silly but any editor with multi-line edit or macro support makes writing this trivial.&lt;/p>
 &lt;p>If the left or right side of the keyboard is pressed, its corresponding counter is incremented.
 If that side is not pressed, then the counter is reset to 0.&lt;/p>
-&lt;p>If &lt;code>left&lt;/code> is not 0 and&lt;/p>
 &lt;h3 id="jumping">Jumping&lt;/h3>
 &lt;p>The same left/right counters are checked to initiate a jump.&lt;/p>
 &lt;p>If both counters are not 0, use the one that is higher to determine which direction to jump in and jump if the player is on the ground.&lt;/p>
