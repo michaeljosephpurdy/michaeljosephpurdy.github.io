@@ -48,8 +48,6 @@ It sounds silly but any editor with multi-line edit or macro support makes writi
 If the left or right side of the keyboard is pressed, its corresponding counter is incremented.
 If that side is not pressed, then the counter is reset to 0.
 
-If `left` is not 0 and 
-
 ### Jumping
 
 The same left/right counters are checked to initiate a jump.
