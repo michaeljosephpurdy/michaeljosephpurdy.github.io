@@ -1,4 +1,142 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Game-Jam on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/game-jam/</link><description>Recent content in Game-Jam on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Sun, 19 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/game-jam/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 03</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-3/</link><pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-3/</guid><description>&lt;h2 id="camera-stuff">Camera stuff&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Game-Jam on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/game-jam/</link><description>Recent content in Game-Jam on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Mon, 20 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/game-jam/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 04</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-4/</link><pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-4/</guid><description>&lt;h2 id="controls">Controls&lt;/h2>
+&lt;p>&lt;strong>Mooncat&lt;/strong>&amp;rsquo;s controls are a very important part of the game.
+It&amp;rsquo;s a two-button game, the rigth button moves the character right, the left button moves the character left.
+These controls are mapped onto the actual controller in an interesting way, where the d-pad/directioal input is &amp;lsquo;move left&amp;rsquo;, and the a/b buttons on the controller are &amp;lsquo;move right&amp;rsquo;.&lt;/p>
+&lt;p>I&amp;rsquo;m on vacation, away from my desktop (writing this on my macbook), so I had to do some research to refresh my brain on the full extent of the controls.
+I found &lt;a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3334076070">this post&lt;/a> on Steam that describes the control scheme really well:&lt;/p>
+&lt;blockquote>
+&lt;p>Jump by moving in one direction and then pressing the other button. Hold for longer jump.&lt;/p>
+&lt;p>Slam after jumping by pressing the other button again, or pressing both buttons while you are falling. Holding a button (or not holding either) will determine the direction you are launched after a bounce.&lt;/p>
+&lt;p>Dash and Run by double tapping a button and hold to run.&lt;/p>
+&lt;p>Dash Jump is similar to dashing, but instead of pressing one button twice, you press and hold both buttons on the second tap. This jump works when you slide off platforms and makes it possible to do some extra long jumps.&lt;/p>
+&lt;p>Air Spin by double tapping a button in mid-air. If the button is for the direction you are moving in, you will gain a bit of forward momentum. If you hold the button you will run after landing. Using this with a dash jump makes it possible to do five tile long jumps with good timing. If the button is for the opposite direction you are moving in, you do a useless spin.&lt;/p>
+&lt;/blockquote>
+&lt;p>I&amp;rsquo;ll be honest here: replicating its control scheme will result in the most indepth control scheme that I&amp;rsquo;ve ever built, and will likely take me out of my comfort zone a bit.&lt;/p>
+&lt;p>Nothing I can&amp;rsquo;t handle.&lt;/p>
+&lt;p>However, I&amp;rsquo;m not really sure if I want to just replicate the existing control scheme.&lt;/p>
+&lt;h2 id="current-state">Current State&lt;/h2>
+&lt;h3 id="basic-movement">Basic movement&lt;/h3>
+&lt;p>Basic movement is already in place.&lt;/p>
+&lt;p>&lt;code>F6, 6, Y, H, N&lt;/code> and anything to the right of them, are treated as &lt;em>right&lt;/em>, and everything to the left is &lt;em>left&lt;/em>.
+&lt;code>up, right&lt;/code> on the arrow keys is also &lt;em>right&lt;/em>, and &lt;code>down, left&lt;/code> are &lt;em>left&lt;/em>.&lt;/p>
+&lt;p>This is checked in the &amp;rsquo;easiest&amp;rsquo; way possible: &lt;strong>a very long if/else condition&lt;/strong>.
+It sounds silly but any editor with multi-line edit or macro support makes writing this trivial.&lt;/p>
+&lt;p>If the left or right side of the keyboard is pressed, its corresponding counter is incremented.
+If that side is not pressed, then the counter is reset to 0.&lt;/p>
+&lt;p>If &lt;code>left&lt;/code> is not 0 and&lt;/p>
+&lt;h3 id="jumping">Jumping&lt;/h3>
+&lt;p>The same left/right counters are checked to initiate a jump.&lt;/p>
+&lt;p>If both counters are not 0, use the one that is higher to determine which direction to jump in and jump if the player is on the ground.&lt;/p>
+&lt;p>Currently, this is a non-variable height jump.&lt;/p>
+&lt;p>The work is done by two systems, one that applies the velocity, and one that locks the players direction.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9893a5">---@param e Jumpable | Velocity | Collidable&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">JumpableToVelocitySystem&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">process&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">dt&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#797593">not&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">perform_single_jump&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">perform_single_jump&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#286983">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#d7827e">e.collidable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">on_ground&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">did_single_jump&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#286983">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.velocity&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">y&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">-&lt;/span>&lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">jump_height&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9893a5">---@param e Jumpable | DeltaPosition&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">JumpableToDeltaPositionSystem&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">process&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">dt&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#797593">not&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">did_single_jump&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">move_forward&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.delta_position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">x&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">elseif&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">move_backward&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.delta_position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">x&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#797593">-&lt;/span>&lt;span style="color:#ea9d34">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="improvments">Improvments&lt;/h2>
+&lt;h3 id="variable-height-jumping">Variable height jumping&lt;/h3>
+&lt;p>I think I can get away with using the same keyboard data to build out variable height.&lt;/p>
+&lt;p>I can modify &lt;code>JumpableToVelocitySystem&lt;/code> to process a portion of the velocity each frame until it hits a certain threshold.&lt;/p>
+&lt;p>Currently the player can jump 4 tiles high.
+&lt;img src="static-jump-height.gif" alt="character jumping 4 tiles high">&lt;/p>
+&lt;p>A favorite game of mine is &lt;strong>Aban Hawins and the 1000 Spikes&lt;/strong>, a XBox Live Arcade game from early 2010s, which was later released to more platformas under the name of &lt;a href="https://en.wikipedia.org/wiki/1001_Spikes">&lt;strong>Aban Hawkins and the 1001 Spikes&lt;/strong>&lt;/a>.
+The game has two discrete jump heights, small and large.
+There was a lot of &lt;em>readability&lt;/em> in the level design, so as a player you quickly learned when you needed to perform each of the jumps.
+I always liked this, so I think I&amp;rsquo;ll do the same thing here.&lt;/p>
+&lt;p>Small jump: 2 tile jump&lt;/p>
+&lt;p>Large jump: 4 tile jump&lt;/p>
+&lt;p>Aban Hawkins has two separate buttons for these jumps (or down + jump to trigger large jump).&lt;/p>
+&lt;p>I don&amp;rsquo;t have the luxury of different buttons for different jumps, so I&amp;rsquo;m thinking&amp;hellip;&lt;/p>
+&lt;p>You hold both buttons to charge for a jump.
+We&amp;rsquo;ll keep track of how long the player is charging their jump by adding &lt;code>dt&lt;/code> to a variable each frame.
+When the player releases the button pressed last, then the jump is executed.&lt;/p>
+&lt;p>If you hold for less than a certain threshold, you will execute a small jump.
+If you hold for more than a certain threshold, you will execute a large jump.
+Maybe if you hold it for longer than a threshold, the jump is cancelled.&lt;/p>
+&lt;hr>
+&lt;p>Alright, so what&amp;rsquo;s written above is in place now:&lt;/p>
+&lt;p>&lt;img src="two-sized-jumps.gif" alt="two-sized-jumps">&lt;/p>
+&lt;p>The player has a 2 tile jump and a 4 tile jump, and you hit those jumps depending on how long you hold down the button for.&lt;/p>
+&lt;p>I currently have it setup to where if you hold it for a full second the jump is then &amp;lsquo;cancelled&amp;rsquo;.
+I don&amp;rsquo;t really know how I feel about this, and I think I may gut it.
+The problem with it is that it penalizes players for prepping their jump ahead of time.&lt;/p>
+&lt;hr>
+&lt;p>Okay, so, yeah, that cancel was a bad idea.
+Really didn&amp;rsquo;t feel good at all.
+I removed that, and now I think it&amp;rsquo;s setup the way it should be.&lt;/p>
+&lt;p>If you&amp;rsquo;re holding down both buttons you will start charging a jump.
+If the jump is charged below a certain threshold, you will perform a small jump, otherwise a large jump.&lt;/p>
+&lt;p>&lt;img src="two-sized-jumps-no-cancel.gif" alt="no-jump-cancels">&lt;/p>
+&lt;hr>
+&lt;p>I figured a good way to show the player input is to draw it over the screen.
+Blue overlay means right input, red overlay means left.&lt;/p>
+&lt;p>&lt;img src="two-sized-jumps-with-overlay.gif" alt="with-overlays">&lt;/p>
+&lt;p>This helps explain a bug in place right now:&lt;/p>
+&lt;p>If you are running left and you push down on right, you begin charging a jump.
+This is good, and expected.&lt;/p>
+&lt;p>And if you let go of right, you will trigger a jump.
+Also good, and also expected.&lt;/p>
+&lt;p>But, what happens when you let go of left?&lt;/p>
+&lt;p>&lt;img src="changing-direction-should-not-jump.gif" alt="changing-direction-not-working">&lt;/p>
+&lt;p>&lt;strong>You immediately jump to the right!&lt;/strong>&lt;/p>
+&lt;p>That&amp;rsquo;s not good.
+What I think should happen here is that when you let go of the direction you&amp;rsquo;re going in, you begin moving in the other direction.
+If that happens, your jump charge should likely reset.&lt;/p>
+&lt;hr>
+&lt;p>All fixed up.&lt;/p>
+&lt;p>&lt;img src="changing-directions-fixed.gif" alt="changing-direction">&lt;/p>
+&lt;p>The &lt;code>Controller&lt;/code> determines if the current input is &lt;code>right_dominant&lt;/code> or &lt;code>left_dominant&lt;/code>, as well as what those values were in the previous frame.
+&lt;code>right_dominant&lt;/code> means both buttons are down, but the right one is down &amp;lsquo;more&amp;rsquo;, or for longer.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">ControllerState&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">is_right_dominant&lt;/span>&lt;span style="color:#797593">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span> &lt;span style="color:#d7827e">self.left&lt;/span> &lt;span style="color:#797593">&amp;gt;&lt;/span> &lt;span style="color:#ea9d34">0&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">self.right&lt;/span> &lt;span style="color:#797593">&amp;gt;&lt;/span> &lt;span style="color:#d7827e">self.left&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>With this info, we can see if they flipped directions like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">ControllerState&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">flipped_directions&lt;/span>&lt;span style="color:#797593">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span> &lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">self.was_right_dominant&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">self.right&lt;/span> &lt;span style="color:#797593">==&lt;/span> &lt;span style="color:#ea9d34">0&lt;/span>&lt;span style="color:#797593">)&lt;/span> &lt;span style="color:#797593">or&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">self.was_left_dominant&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">self.left&lt;/span> &lt;span style="color:#797593">==&lt;/span> &lt;span style="color:#ea9d34">0&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can inspect that in the jump system and reset the charge value accordingly&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">state&lt;/span> &lt;span style="color:#797593">==&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;charging&amp;#39;&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">self.controller_state&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">flipped_directions&lt;/span>&lt;span style="color:#797593">()&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">state&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;idle&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">if&lt;/span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">state&lt;/span> &lt;span style="color:#797593">==&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;idle&amp;#39;&lt;/span> &lt;span style="color:#286983">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#d7827e">e.jumpable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">charge&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#ea9d34">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="overall-code-changes">Overall code changes&lt;/h2>
+&lt;p>When I started working on the jump mechanics today, I had some of this work being done by multiple systems.&lt;/p>
+&lt;p>It&amp;rsquo;s always easier to break problems down into smaller pieces.
+Sometimes it makes sense for those smaller pieces to live in different functions, or different files.&lt;/p>
+&lt;p>Previously, I had the jump-related code in a few systems.
+It &lt;em>sort of&lt;/em> made sense to do that.
+Code that relates to jumping and mutates &lt;code>delta_position&lt;/code> should go in &lt;code>JumpableToDeltaPositionSystem&lt;/code>.
+Same with jumping code that mutates &lt;code>velocity&lt;/code>, a perfect place for that would be the &lt;code>JumpableToVelocitySystem&lt;/code>.
+The problem is is when these systems end up &amp;lsquo;prepping&amp;rsquo; fields for downstream systems.&lt;/p>
+&lt;p>&lt;code>ControllableToMovableAndJumpableSystem&lt;/code> was handling controller inputs and mutating &lt;code>movable&lt;/code> and &lt;code>jumpable&lt;/code> components of entities.
+But those downstream systems don&amp;rsquo;t do anything unless that upstream system sets &lt;code>Jumpable.state&lt;/code> to &lt;code>charging&lt;/code> or &lt;code>jump&lt;/code>.&lt;/p>
+&lt;p>&lt;code>ControllableToMovableAndJumpableSystem&lt;/code> has now been split into &lt;code>ControllableToMovableSystem&lt;/code> and &lt;code>ControllableToJumpableSystem&lt;/code>, and the later now has all of the jump related code, so no more &lt;code>JumpableToDeltaPositionSystem&lt;/code> or &lt;code>JumpableToVelocitySystem&lt;/code>.&lt;/p>
+&lt;p>I &lt;em>think&lt;/em> that it&amp;rsquo;s better off this way.
+In the end, it&amp;rsquo;s working the way I wanted it to, and making the game is what&amp;rsquo;s important.&lt;/p>
+&lt;hr>
+&lt;p>source: &lt;a href="https://github.com/michaeljosephpurdy/eggplant-jam-25">https://github.com/michaeljosephpurdy/eggplant-jam-25&lt;/a>&lt;/p></description></item><item><title>Sundog - Devlog - 03</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-3/</link><pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-3/</guid><description>&lt;h2 id="camera-stuff">Camera stuff&lt;/h2>
 &lt;p>I hooked up the level boundaries to the camera system.
 I&amp;rsquo;ve been using the same camera system for the past couple of years.
 It works in a fairly straightforward way, and thankfully in pretty game-agnostic, so I&amp;rsquo;m able to lift it from game to game and it &amp;lsquo;just works&amp;rsquo;.&lt;/p>
@@ -48,7 +186,7 @@ This is so the camera will not move utside of the level boundaries&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#d7827e">self.position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">y&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">lerp&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">self.old_position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">y&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">self.position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">y&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#d7827e">self.speed&lt;/span> &lt;span style="color:#797593">*&lt;/span> &lt;span style="color:#d7827e">dt&lt;/span>&lt;span style="color:#797593">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Finally, we apply the camera by calling &lt;code>love.graphics.translate&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#d7827e">love.graphics&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">translate&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#797593">-&lt;/span>&lt;span style="color:#d7827e">self.position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">x&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#797593">-&lt;/span>&lt;span style="color:#d7827e">self.position&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">y&lt;/span>&lt;span style="color:#797593">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Sundog - Devlog - 02</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-2/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-2/</guid><description>&lt;h2 id="the-basics">The Basics&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Sundog - Devlog - 02</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-2/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-2/</guid><description>&lt;h2 id="the-basics">The Basics&lt;/h2>
 &lt;p>&lt;code>Lua&lt;/code> is my weapon of choice for most game development which I end up pairing with &lt;a href="https://lexaloffle.com">pico-8&lt;/a> or &lt;a href="https://love2d.org">love-2d&lt;/a>.
 I love how fast and dirty I can be with &lt;code>Lua&lt;/code>, but man does that sometimes the lack of type-safety bites me in the butt.
 To remedy this, I try to set myself up for success by getting soe me type-safety via &lt;a href="https://luals.github.io/">lua language server&lt;/a> and it&amp;rsquo;s &lt;a href="https://luals.github.io/wiki/annotations/">annotations&lt;/a>.&lt;/p>
@@ -159,7 +297,7 @@ I&amp;rsquo;m getting the sneaking suspicion though that this cost-savings will 
 &lt;p>When levels are loaded from &lt;code>LDtk&lt;/code>, the level&amp;rsquo;s top-left coordinates, along with the level&amp;rsquo;s bottom-right coordinates, are stored.
 We check the players position against these boundaries, and if the player is out of bounds we trigger the same screen transition flow, only with the current level id.&lt;/p>
 &lt;p>&lt;img src="respawn.gif" alt="respawn">&lt;/p>
-&lt;p>source: &lt;a href="https://github.com/michaeljosephpurdy/eggplant-jam-25">https://github.com/michaeljosephpurdy/eggplant-jam-25&lt;/a>&lt;/p></description></item><item><title>Sundog - Devlog - 01</title><link>https://mikepurdy.dev/posts/egg-plant-jam-25-1/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-jam-25-1/</guid><description>&lt;p>I love &lt;a href="https://eggplant.show">eggplant podcast&lt;/a>.&lt;/p>
+&lt;p>source: &lt;a href="https://github.com/michaeljosephpurdy/eggplant-jam-25">https://github.com/michaeljosephpurdy/eggplant-jam-25&lt;/a>&lt;/p></description></item><item><title>Sundog - Devlog - 01</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-1/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-1/</guid><description>&lt;p>I love &lt;a href="https://eggplant.show">eggplant podcast&lt;/a>.&lt;/p>
 &lt;p>I&amp;rsquo;ve been listening to it for a long time, and have spent hours listening to it while running.&lt;/p>
 &lt;p>I participate in a lot of game jams, but most of them have been through the internal game jams that myself and some other folks at Amazon put together.&lt;/p>
 &lt;p>As I was lurking around the &lt;a href="https://discord.gg/eggplant">eggplant discord&lt;/a> and noticed that the &lt;a href="https://itch.io/jam/eggjam-25">Eggplant Game Jam #25&lt;/a> started a little bit ago.
