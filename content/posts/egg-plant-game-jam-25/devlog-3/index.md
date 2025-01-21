@@ -82,3 +82,4 @@ Finally, we apply the camera by calling `love.graphics.translate`
 ```lua
 love.graphics.translate(-self.position.x, -self.position.y)
 ```
+
