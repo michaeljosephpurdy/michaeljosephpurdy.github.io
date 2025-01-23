@@ -11,8 +11,8 @@ tags:
 ## Controls
 
 **Mooncat**'s controls are a very important part of the game.
-It's a two-button game, the rigth button moves the character right, the left button moves the character left.
-These controls are mapped onto the actual controller in an interesting way, where the d-pad/directioal input is 'move left', and the a/b buttons on the controller are 'move right'.
+It's a two-button game, the right button moves the character right, the left button moves the character left.
+These controls are mapped onto the actual controller in an interesting way, where the d-pad/directional input is 'move left', and the a/b buttons on the controller are 'move right'.
 
 I'm on vacation, away from my desktop (writing this on my macbook), so I had to do some research to refresh my brain on the full extent of the controls.
 I found [this post](https://steamcommunity.com/sharedfiles/filedetails/?id=3334076070) on Steam that describes the control scheme really well:
@@ -83,7 +83,7 @@ function JumpableToDeltaPositionSystem:process(e, dt)
 end
 ```
 
-## Improvments
+## Improvements
 
 ### Variable height jumping
 
@@ -94,7 +94,7 @@ I can modify `JumpableToVelocitySystem` to process a portion of the velocity eac
 Currently the player can jump 4 tiles high.
 ![character jumping 4 tiles high](static-jump-height.gif)
 
-A favorite game of mine is **Aban Hawins and the 1000 Spikes**, a XBox Live Arcade game from early 2010s, which was later released to more platformas under the name of [**Aban Hawkins and the 1001 Spikes**](https://en.wikipedia.org/wiki/1001_Spikes).
+A favorite game of mine is **Aban Hawins and the 1000 Spikes**, a XBox Live Arcade game from early 2010s, which was later released to more platforms under the name of [**Aban Hawkins and the 1001 Spikes**](https://en.wikipedia.org/wiki/1001_Spikes).
 The game has two discrete jump heights, small and large.
 There was a lot of _readability_ in the level design, so as a player you quickly learned when you needed to perform each of the jumps.
 I always liked this, so I think I'll do the same thing here.

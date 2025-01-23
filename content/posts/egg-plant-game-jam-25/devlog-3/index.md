@@ -55,7 +55,7 @@ self.position = e.position + self.offset
 ```
 
 We then check the left and right side of the level, and clamp the camera's `x` position.
-This is so the camera will not move utside of the level boundaries
+This is so the camera will not move outside of the level boundaries
 ```lua
 if e.position.x >= self.level_info.bottom_right.x - GAME_WIDTH / 2 then
   self.position.x = self.level_info.bottom_right.x - GAME_WIDTH
