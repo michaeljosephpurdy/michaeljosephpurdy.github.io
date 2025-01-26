@@ -76,7 +76,7 @@ end
 ```
 
 You can read more about `tiny-ecs` filter functions [here](http://bakpakin.github.io/tiny-ecs/doc/index.html#Filter_functions).
-I'm not entirely sure which I prefer yet; the helper functions are helpful, but is a step backwards in type-safety.
+I'm not entirely sure which I prefer yet; the helper functions are more concise, but are a step backwards in type-safety.
 
 The `WalkerEntity`, like any other entity added to the world, will be added to any system that it passes the filter for.
 
@@ -97,4 +97,23 @@ The fix is simple (`tiny.requireAny -> tiny.requireAll`), but it does make me si
 
 I'd like to think not.
 Regardless, self-inflicted bug resolved.
+
+### Back to the Boot
+
+Eh, so, this isn't really working the way I'd like.
+Or rather, I'm not getting it working well as fast as I'd like.
+
+My idea was:
+* Have the shadow staying on the ground, slowly moving to the left.
+* It's `alpha` channel of the _shadow sprite_ will oscillate from 0, to 1, back to 0, etc.
+* The _boot sprite_ `offset` will also oscillate along with the _shadow sprite_ `alpha channel`
+  * when `alpha` channel is `1`, the _boot sprite_ `offset` will be 0, resulting in _boot sprite_ being directly on top of _shadow sprite_
+  * when `alpha` channel is `0`, the _boot sprite_ `offset` will be large, resulting in _boot sprite_ being up the screen
+* _boot sprite_ `rotation` will also oscillate along with the _shadow sprite_ `alpha channel`
+
+I _think_ if I can pull this off, it will result in a boot rotating and coming down, with the shadow getting darker the closer the boot is to the ground.
+I can check collisions on the shadow when `alpha` is over a certain threshold, which would be an easy way to kill off the player.
+The main driver with this idea was to be able to just keep a basic `AABB` bounding box collision check and not having to worry about irregular polygon based collision checks.
+Though maybe that'd be easier...
+
 
