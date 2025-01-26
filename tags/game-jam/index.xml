@@ -1,5 +1,62 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Game-Jam on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/game-jam/</link><description>Recent content in Game-Jam on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Thu, 23 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/game-jam/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
-&lt;p>I mentioned in &lt;a href="../devlog-2">devlog - 02&lt;/a> that I use annotations from &lt;a href="https://luals.github.io">Lua Language Server&lt;/a> to get some static type checking for my code.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Game-Jam on mikepurdy.dev</title><link>https://mikepurdy.dev/tags/game-jam/</link><description>Recent content in Game-Jam on mikepurdy.dev</description><generator>Hugo 0.139.3</generator><language>en-us</language><managingEditor>michaeljosephpurdy@gmail.com (Mike Purdy)</managingEditor><webMaster>michaeljosephpurdy@gmail.com (Mike Purdy)</webMaster><copyright>Mike Purdy</copyright><lastBuildDate>Sat, 25 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mikepurdy.dev/tags/game-jam/index.xml" rel="self" type="application/rss+xml"/><item><title>Sundog - Devlog - 07</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-7/</link><pubDate>Sat, 25 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-7/</guid><description>&lt;h2 id="progressing-gameplay">Progressing Gameplay&lt;/h2>
+&lt;p>As cool as it was animating the player (see &lt;a href="../devlog-5/">Devlog - 05&lt;/a>), we need to make this game an actual game.&lt;/p>
+&lt;p>I&amp;rsquo;m thinking a good first step will be incorporated our first enemy.&lt;/p>
+&lt;h3 id="the-cart">The Cart&lt;/h3>
+&lt;p>The main idea so far for the game is that you&amp;rsquo;ve escaped a hotdog cart, and are trying to get to the beach.
+I&amp;rsquo;m thinking there will be a small amount of levels, the first is just outside of the hotdog cart in the city, and the last being the beach or the boardwalk.
+Not sure about what lies in between.&lt;/p>
+&lt;p>&lt;a href="https://learnhotdogs.com">www.learnhotdogs.com&lt;/a> has a &lt;a href="https://learnhotdogs.com/what-size-hot-dogs/">whole section&lt;/a> on hotdog sizes, and I guess your standard at-home hotdog is &lt;code>8:1&lt;/code>, meaning that there are 8 in a 1lb package.
+Never thought of them being labeled like this in what I&amp;rsquo;d consider a &lt;em>ratio format&lt;/em>.
+&lt;a href="https://www.learnhotdogs.com">www.learnhotdogs.com&lt;/a> is apparently a site for folks interesting in starting hotdog carts, and from the looks of it, is a pretty good resource.&lt;/p>
+&lt;p>This might be helpful for thinking through other items that could appear on the cart, or we could even use &lt;a href="https://hotdogcartstore.com">www.hotdogcartstore.com&lt;/a> for help creating one.&lt;/p>
+&lt;h2 id="walkers">Walkers&lt;/h2>
+&lt;p>When I think of the environment just outside of the hotdog cart, I picture people walking by.
+Since we&amp;rsquo;re a hotdog, I think the shoes/boots will be pretty large, but not too big.&lt;/p>
+&lt;p>So, maybe &amp;lsquo;walkers&amp;rsquo; are moving across the map and you need to get out of the way of them.
+I think this could work with a shadow growing on the floor with a foot coming down and meeting it.
+The shadow would grow in size until the foot comes down and meets the ground.
+Afterwards the foot moves up and the shadow grows smaller.
+The shadow will be both &lt;em>realistic&lt;/em> and a mechanism to &lt;em>telegraph&lt;/em> the enemy, not that I&amp;rsquo;m worried too much about the realistic-ness in a game where a hotdog is trying to get to a beach&amp;hellip;&lt;/p>
+&lt;p>To implement this, I&amp;rsquo;m thinking&amp;hellip;&lt;/p>
+&lt;p>I tag &lt;em>where in the level&lt;/em> that feet can hit, then have the foot come down on that spot every &lt;em>x seconds&lt;/em>.
+Each time it comes down we could have a different shoe/boot combination (&lt;em>scope creep alert&lt;/em>).&lt;/p>
+&lt;p>I started with the shadow
+&lt;img src="pulsing-shadow.gif" alt="pulsing shadow">&lt;/p>
+&lt;p>I then started working on the boot.&lt;/p>
+&lt;h3 id="weird-bug">Weird bug&lt;/h3>
+&lt;p>Rotations always confuse me a bit, so I incremented the boot&amp;rsquo;s rotation, which is radians, by delta time each frame.
+The idea was that this would help me zero-in on the rotational offset.&lt;/p>
+&lt;p>&lt;img src="weird-bug.gif" alt="weird-bug">&lt;/p>
+&lt;p>Why the hell is the screen transition constantly kicking off?&lt;/p>
+&lt;p>I was pretty confused, but realized what was going on after some debugging.&lt;/p>
+&lt;p>Filter functions in &lt;a href="https://github.com/bakpakin/tiny-ecs">tiny-ecs&lt;/a> can be defined two different ways, either directly or via helper functions that tiny-ecs offers&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#9893a5">---@param e Collidable | Position&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">CollisionRegistrationSystem&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">filter&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span> &lt;span style="color:#d7827e">e.position&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">e.collidable&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e.collidable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">radius&lt;/span> &lt;span style="color:#797593">or&lt;/span> &lt;span style="color:#d7827e">e.collidable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">is_tile&lt;/span> &lt;span style="color:#797593">or&lt;/span> &lt;span style="color:#d7827e">e.collidable&lt;/span>&lt;span style="color:#797593">.&lt;/span>&lt;span style="color:#d7827e">is_solid&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#d7827e">SpriteDrawingSystem.filter&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">tiny.requireAll&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#ea9d34">&amp;#39;position&amp;#39;&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;drawable&amp;#39;&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This would behave the same as:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">function&lt;/span> &lt;span style="color:#56949f">SpriteDrawingSystem&lt;/span>&lt;span style="color:#797593">:&lt;/span>&lt;span style="color:#d7827e">filter&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#d7827e">e&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span> &lt;span style="color:#d7827e">e.position&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">e.drawable&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can read more about &lt;code>tiny-ecs&lt;/code> filter functions &lt;a href="http://bakpakin.github.io/tiny-ecs/doc/index.html#Filter_functions">here&lt;/a>.
+I&amp;rsquo;m not entirely sure which I prefer yet; the helper functions are helpful, but is a step backwards in type-safety.&lt;/p>
+&lt;p>The &lt;code>WalkerEntity&lt;/code>, like any other entity added to the world, will be added to any system that it passes the filter for.&lt;/p>
+&lt;p>That&amp;rsquo;s how this bug ended up happening.&lt;/p>
+&lt;p>&lt;code>PlayerLevelBoundarySystem&lt;/code> checks the player&amp;rsquo;s position against the level boundaries and initiates a restart of the level if the player goes out of bounds.
+Take a look at it&amp;rsquo;s filter function:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#d7827e">PlayerLevelBoundarySystem.filter&lt;/span> &lt;span style="color:#797593">=&lt;/span> &lt;span style="color:#d7827e">tiny.requireAny&lt;/span>&lt;span style="color:#797593">(&lt;/span>&lt;span style="color:#ea9d34">&amp;#39;player&amp;#39;&lt;/span>&lt;span style="color:#797593">,&lt;/span> &lt;span style="color:#ea9d34">&amp;#39;position&amp;#39;&lt;/span>&lt;span style="color:#797593">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>See the problem?
+&lt;code>tiny.requireAny&lt;/code> ends up being something like &lt;code>return e.player or e.position&lt;/code>.
+So, our &lt;code>WalkerEntity&lt;/code> was being added to the &lt;code>PlayerLevelBoundarySystem&lt;/code>, and when rotating it it was ended up out of bounds, triggering a level restart.&lt;/p>
+&lt;p>The fix is simple (&lt;code>tiny.requireAny -&amp;gt; tiny.requireAll&lt;/code>), but it does make me sit back and think:&lt;/p>
+&lt;blockquote>
+&lt;p>Would this have been a problem if I just coded the filter function myself?&lt;/p>
+&lt;/blockquote>
+&lt;p>I&amp;rsquo;d like to think not.
+Regardless, self-inflicted bug resolved.&lt;/p></description></item><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
+&lt;p>I mentioned in &lt;a href="../devlog-2">Devlog - 02&lt;/a> that I use annotations from &lt;a href="https://luals.github.io">Lua Language Server&lt;/a> to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.&lt;/p>
 &lt;p>Currently I have all of these types defined in &lt;code>components.lua&lt;/code>.
 It&amp;rsquo;s just a large file that contains all of the definitions of the components that I&amp;rsquo;m creating within this project.&lt;/p>

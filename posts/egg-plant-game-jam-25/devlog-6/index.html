@@ -1,6 +1,6 @@
 <!doctype html><html lang=en-us><head><meta charset=utf-8><title>Sundog - Devlog - 06 | mikepurdy.dev</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content="Type-checking in Lua
-I mentioned in devlog - 02 that I use annotations from Lua Language Server to get some static type checking for my code.
+I mentioned in Devlog - 02 that I use annotations from Lua Language Server to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.
 Currently I have all of these types defined in components.lua.
 It&rsquo;s just a large file that contains all of the definitions of the components that I&rsquo;m creating within this project.
@@ -19,7 +19,7 @@ Systems then reference these types directly:"><meta name=author content="Mike Pu
 <a href=/tags/sundog>sundog</a>
 <a href=/tags/game-jam>game-jam</a>
 <a href=/tags/eggplant-25>eggplant-25</a>
-]</div></div><div><h2 id=type-checking-in-lua>Type-checking in Lua</h2><p>I mentioned in <a href=../devlog-2>devlog - 02</a> that I use annotations from <a href=https://luals.github.io>Lua Language Server</a> to get some static type checking for my code.
+]</div></div><div><h2 id=type-checking-in-lua>Type-checking in Lua</h2><p>I mentioned in <a href=../devlog-2>Devlog - 02</a> that I use annotations from <a href=https://luals.github.io>Lua Language Server</a> to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.</p><p>Currently I have all of these types defined in <code>components.lua</code>.
 It&rsquo;s just a large file that contains all of the definitions of the components that I&rsquo;m creating within this project.</p><div class=highlight><pre tabindex=0 style=color:#575279;background-color:#faf4ed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#9893a5>---@class Drawable</span>
 </span></span><span style=display:flex><span><span style=color:#9893a5>---@field drawable _Drawable</span>
