@@ -10,7 +10,7 @@ tags:
 
 ## Type-checking in Lua
 
-I mentioned in [devlog - 02](../devlog-2) that I use annotations from [Lua Language Server](https://luals.github.io) to get some static type checking for my code.
+I mentioned in [Devlog - 02](../devlog-2) that I use annotations from [Lua Language Server](https://luals.github.io) to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.
 
 Currently I have all of these types defined in `components.lua`.
