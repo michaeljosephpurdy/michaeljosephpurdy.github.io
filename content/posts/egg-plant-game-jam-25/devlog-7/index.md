@@ -116,4 +116,33 @@ I can check collisions on the shadow when `alpha` is over a certain threshold, w
 The main driver with this idea was to be able to just keep a basic `AABB` bounding box collision check and not having to worry about irregular polygon based collision checks.
 Though maybe that'd be easier...
 
+This is what I've got so far:
+![a little better](walking-is-a-little-better.gif)
 
+It looks like it's _close_ to working.
+
+Honestly?
+The math sort of gets confusing, lol.
+I've got offsets of offsets of positions with rotations!
+
+I've got it working more or less without the rotation, which is good.
+~Sometimes,~ Breaking down a problem like this to small pieces is the way to go.
+
+![walking but with no rotation](walking-is-working-better-no-rotation.gif)
+
+
+---
+
+Implementing rotation, has small moments where it looks 'correct', but not quite.
+
+![walking rotation is still off](walker-rotation-is-way-off.gif)
+
+---
+
+![better](working-but-needs-tweaking.gif)
+
+This is much, much better.
+
+My areas of focus when I pick this back up:
+* Increase walk speed
+* Decrease range of movement up the screen
