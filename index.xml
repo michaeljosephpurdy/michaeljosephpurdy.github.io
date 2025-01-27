@@ -41,7 +41,7 @@ The idea was that this would help me zero-in on the rotational offset.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#286983">return&lt;/span> &lt;span style="color:#d7827e">e.position&lt;/span> &lt;span style="color:#797593">and&lt;/span> &lt;span style="color:#d7827e">e.drawable&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#286983">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can read more about &lt;code>tiny-ecs&lt;/code> filter functions &lt;a href="http://bakpakin.github.io/tiny-ecs/doc/index.html#Filter_functions">here&lt;/a>.
-I&amp;rsquo;m not entirely sure which I prefer yet; the helper functions are helpful, but is a step backwards in type-safety.&lt;/p>
+I&amp;rsquo;m not entirely sure which I prefer yet; the helper functions are more concise, but are a step backwards in type-safety.&lt;/p>
 &lt;p>The &lt;code>WalkerEntity&lt;/code>, like any other entity added to the world, will be added to any system that it passes the filter for.&lt;/p>
 &lt;p>That&amp;rsquo;s how this bug ended up happening.&lt;/p>
 &lt;p>&lt;code>PlayerLevelBoundarySystem&lt;/code> checks the player&amp;rsquo;s position against the level boundaries and initiates a restart of the level if the player goes out of bounds.
@@ -55,7 +55,46 @@ So, our &lt;code>WalkerEntity&lt;/code> was being added to the &lt;code>PlayerLe
 &lt;p>Would this have been a problem if I just coded the filter function myself?&lt;/p>
 &lt;/blockquote>
 &lt;p>I&amp;rsquo;d like to think not.
-Regardless, self-inflicted bug resolved.&lt;/p></description></item><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
+Regardless, self-inflicted bug resolved.&lt;/p>
+&lt;h3 id="back-to-the-boot">Back to the Boot&lt;/h3>
+&lt;p>Eh, so, this isn&amp;rsquo;t really working the way I&amp;rsquo;d like.
+Or rather, I&amp;rsquo;m not getting it working well as fast as I&amp;rsquo;d like.&lt;/p>
+&lt;p>My idea was:&lt;/p>
+&lt;ul>
+&lt;li>Have the shadow staying on the ground, slowly moving to the left.&lt;/li>
+&lt;li>It&amp;rsquo;s &lt;code>alpha&lt;/code> channel of the &lt;em>shadow sprite&lt;/em> will oscillate from 0, to 1, back to 0, etc.&lt;/li>
+&lt;li>The &lt;em>boot sprite&lt;/em> &lt;code>offset&lt;/code> will also oscillate along with the &lt;em>shadow sprite&lt;/em> &lt;code>alpha channel&lt;/code>
+&lt;ul>
+&lt;li>when &lt;code>alpha&lt;/code> channel is &lt;code>1&lt;/code>, the &lt;em>boot sprite&lt;/em> &lt;code>offset&lt;/code> will be 0, resulting in &lt;em>boot sprite&lt;/em> being directly on top of &lt;em>shadow sprite&lt;/em>&lt;/li>
+&lt;li>when &lt;code>alpha&lt;/code> channel is &lt;code>0&lt;/code>, the &lt;em>boot sprite&lt;/em> &lt;code>offset&lt;/code> will be large, resulting in &lt;em>boot sprite&lt;/em> being up the screen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;em>boot sprite&lt;/em> &lt;code>rotation&lt;/code> will also oscillate along with the &lt;em>shadow sprite&lt;/em> &lt;code>alpha channel&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>I &lt;em>think&lt;/em> if I can pull this off, it will result in a boot rotating and coming down, with the shadow getting darker the closer the boot is to the ground.
+I can check collisions on the shadow when &lt;code>alpha&lt;/code> is over a certain threshold, which would be an easy way to kill off the player.
+The main driver with this idea was to be able to just keep a basic &lt;code>AABB&lt;/code> bounding box collision check and not having to worry about irregular polygon based collision checks.
+Though maybe that&amp;rsquo;d be easier&amp;hellip;&lt;/p>
+&lt;p>This is what I&amp;rsquo;ve got so far:
+&lt;img src="walking-is-a-little-better.gif" alt="a little better">&lt;/p>
+&lt;p>It looks like it&amp;rsquo;s &lt;em>close&lt;/em> to working.&lt;/p>
+&lt;p>Honestly?
+The math sort of gets confusing, lol.
+I&amp;rsquo;ve got offsets of offsets of positions with rotations!&lt;/p>
+&lt;p>I&amp;rsquo;ve got it working more or less without the rotation, which is good.
+&lt;del>Sometimes,&lt;/del> Breaking down a problem like this to small pieces is the way to go.&lt;/p>
+&lt;p>&lt;img src="walking-is-working-better-no-rotation.gif" alt="walking but with no rotation">&lt;/p>
+&lt;hr>
+&lt;p>Implementing rotation, has small moments where it looks &amp;lsquo;correct&amp;rsquo;, but not quite.&lt;/p>
+&lt;p>&lt;img src="walker-rotation-is-way-off.gif" alt="walking rotation is still off">&lt;/p>
+&lt;hr>
+&lt;p>&lt;img src="working-but-needs-tweaking.gif" alt="better">&lt;/p>
+&lt;p>This is much, much better.&lt;/p>
+&lt;p>My areas of focus when I pick this back up:&lt;/p>
+&lt;ul>
+&lt;li>Increase walk speed&lt;/li>
+&lt;li>Decrease range of movement up the screen&lt;/li>
+&lt;/ul></description></item><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
 &lt;p>I mentioned in &lt;a href="../devlog-2">Devlog - 02&lt;/a> that I use annotations from &lt;a href="https://luals.github.io">Lua Language Server&lt;/a> to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.&lt;/p>
 &lt;p>Currently I have all of these types defined in &lt;code>components.lua&lt;/code>.
