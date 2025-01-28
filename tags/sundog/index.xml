@@ -94,7 +94,22 @@ I&amp;rsquo;ve got offsets of offsets of positions with rotations!&lt;/p>
 &lt;ul>
 &lt;li>Increase walk speed&lt;/li>
 &lt;li>Decrease range of movement up the screen&lt;/li>
-&lt;/ul></description></item><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
+&lt;/ul>
+&lt;hr>
+&lt;p>Instead of tackling those two things, I instead added another boot, and surprisingly though not surprisingly in hindsight, it looked very badly:&lt;/p>
+&lt;p>&lt;img src="two-in-sync.gif" alt="two boots walking but they are in sync">&lt;/p>
+&lt;p>Should be an easy fix if we just offset the animation times, right?&lt;/p>
+&lt;p>&lt;img src="almost-there.gif" alt="two boots offset from eachother">&lt;/p>
+&lt;p>Ugh!
+We&amp;rsquo;re real close!&lt;/p>
+&lt;p>Like, half of the time that looks pretty sweet.
+The other half of the time it looks pretty cursed.&lt;/p>
+&lt;p>We need to move the feet more horizontally if it&amp;rsquo;s coming down, and less when it&amp;rsquo;s moving up.&lt;/p>
+&lt;hr>
+&lt;p>Got it!&lt;/p>
+&lt;p>&lt;img src="actually-working.gif" alt="actually working">&lt;/p>
+&lt;p>Ah, actually, had to fix the shadow&lt;/p>
+&lt;p>&lt;img src="shadow-fixed.gif" alt="actually working">&lt;/p></description></item><item><title>Sundog - Devlog - 06</title><link>https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</link><pubDate>Thu, 23 Jan 2025 00:00:00 +0000</pubDate><author>michaeljosephpurdy@gmail.com (Mike Purdy)</author><guid isPermaLink="true">https://mikepurdy.dev/posts/egg-plant-game-jam-25/devlog-6/</guid><description>&lt;h2 id="type-checking-in-lua">Type-checking in Lua&lt;/h2>
 &lt;p>I mentioned in &lt;a href="../devlog-2">Devlog - 02&lt;/a> that I use annotations from &lt;a href="https://luals.github.io">Lua Language Server&lt;/a> to get some static type checking for my code.
 Without it, I find myself spending way too much time tracking down silly issues.&lt;/p>
 &lt;p>Currently I have all of these types defined in &lt;code>components.lua&lt;/code>.
