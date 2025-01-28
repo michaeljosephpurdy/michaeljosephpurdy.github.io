@@ -146,3 +146,32 @@ This is much, much better.
 My areas of focus when I pick this back up:
 * Increase walk speed
 * Decrease range of movement up the screen
+
+---
+
+Instead of tackling those two things, I instead added another boot, and surprisingly though not surprisingly in hindsight, it looked very badly:
+
+![two boots walking but they are in sync]( two-in-sync.gif)
+
+Should be an easy fix if we just offset the animation times, right?
+
+![two boots offset from eachother](almost-there.gif)
+
+Ugh!
+We're real close!
+
+Like, half of the time that looks pretty sweet.
+The other half of the time it looks pretty cursed.
+
+We need to move the feet more horizontally if it's coming down, and less when it's moving up.
+
+---
+
+Got it!
+
+![actually working](actually-working.gif)
+
+Ah, actually, had to fix the shadow
+
+![actually working](shadow-fixed.gif)
+
