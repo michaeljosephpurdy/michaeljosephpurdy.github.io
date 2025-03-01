@@ -3,7 +3,7 @@ date: 2024-08-06
 tags:
 - lua
 - love2d
-- gamejam
+- ecs
 title: A Prime Summer
 ---
 
