@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>002-a-pivot – musings in monograms - mikepurdy.dev</title>
+  <link rel="stylesheet" href="../../../../style.css">
+</head>
+<body>
+  <main>
+<p><a href="../../index.html">back</a></p>
+<h1>002-a-pivot</h1>
+<p><time datetime="2026-09-09">20260909</time> · <a href="https://purdy.itch.io/musings-in-monograms/devlog/1657334/002-a-pivot">original on itch.io</a></p>
+<article><p>I was playing Mario’s Picross yesterday, and felt more enjoyment when finishing those puzzles than the puzzles in this game.</p>
+<p>I worry that there is too much of a disconnect between “puzzle I just finished” and “prize I just received”.</p>
+<p>I think maybe instead of “solve a very very small portion of this image to solve the whole image”, maybe players should be solving something more representative of the final piece.</p>
+<p>I need to think through what that looks like, and how I model it in my current workflow.</p>
+<p>Speaking of my current workflow.
+Right now each puzzle has an <code>.aseprite</code> file, with two layers.
+One, is the ‘prize’, which is the full size (400x240) image you see after completing the puzzle.
+Each of these prizes were hand drawn on my iPad with Procreate, with the exception of one puzzle, which I used <a href="https://niftyutils.com/en/imagetools/image-1bit-dither/" rel="nofollow noopener" referrerpolicy="origin">a nifty image util</a> to convert it to 1 bit.
+The other layer, is the ‘puzzle’, which is what you solve (15x15 max).
+Each <code>.aseprite</code> file is picked up in a Make recipe that executes Aseprite headless to export the images.</p>
+<pre><code>build/images/%.exported: puzzles/%.aseprite
+	@echo "* extracting prize and puzzle images from puzzle aseprite files"
+	@mkdir -p build/images
+	aseprite -b $&lt; --layer prize --save-as build/images/$*-prize.png
+	aseprite -b $&lt; --layer puzzle --save-as build/images/$*-puzzle.png
+	@touch $@
+</code></pre>
+<p>This exports two images, one with <code>-prize.png</code> and another with <code>-puzzle.png</code>.
+These images are read by a python script that marches through the pixels and parses the image data to store into a known internal format, and also to build the puzzle grid.</p>
+<p>I’m thinking that each puzzle could be split up into 4 quadrants, and each quadrant’s puzzle would be a zoomed-out/blurred version of the quadrant.
+I don’t think I’ll build this through a script, I think this would be something hand drawn, to make sure that the main subject of the image is what drives the puzzle, not artistic liberties don’t mislead the puzzle definition.</p>
+<p>This is all a hunch, really.
+I need people to try the game out for me to validate if ‘solving puzzle for prize’ isn’t as fun as it usually is in nonogram games.</p></article></main>
+  <footer></footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+:root { color-scheme: light dark; --max: 52rem; }
+body { font: 16px/1.6 system-ui, sans-serif; margin: 0 auto; max-width: var(--max); padding: 1rem; }
+header, footer { padding: .5rem 0; }
+img { max-width: 100%; height: auto; }
+.grid { list-style: none; padding: 0; display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+.grid a { display: block; text-decoration: none; }
+.grid img, .noimg { width: 100%; aspect-ratio: 315 / 250; object-fit: cover; background: #8884; display: block; }
+.shots { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+table.info { border-collapse: collapse; margin: 1rem 0; }
+table.info th, table.info td { text-align: left; padding: .25rem 1rem .25rem 0; border-bottom: 1px solid #8884; vertical-align: top; }
+table.info th { font-weight: 600; white-space: nowrap; }
+.dates { color: #888; margin-top: -.5rem; }

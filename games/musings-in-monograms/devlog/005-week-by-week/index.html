@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>005-week-by-week – musings in monograms - mikepurdy.dev</title>
+  <link rel="stylesheet" href="../../../../style.css">
+</head>
+<body>
+  <main>
+<p><a href="../../index.html">back</a></p>
+<h1>005-week-by-week</h1>
+<p><time datetime="2026-09-28">20260928</time> · <a href="https://purdy.itch.io/musings-in-monograms/devlog/1680333/005-week-by-week">original on itch.io</a></p>
+<article><p>In <a href="../../../../games/musings-in-monograms/devlog/003-lean-into-it/index.html">003-lean-into-it devlog</a>, I mentioned how I was rethinking the puzzle/prize relationship.</p>
+<p>I made good progress on that this weekend.</p>
+<p>There’s a collage of images, and you work through solving each puzzle in the collage.
+When you solve every segment of a prize, you complete the prize.
+You then get to view the prize and read the blurb.</p>
+<p><img src="../../images/ce52d2d6c4b9.png" alt="collage" loading="lazy"></p>
+<p>This is the current ‘map’.
+I call it map in all of my code, but when typing this devlog I thought ‘collage’ was a better description.
+Now I feel I should go rename it all over the place.</p>
+<p>Anyway.
+I have a layer for reach of these thumbnails.
+I then have a layer specifically for splitting up puzzles.
+This puzzle-grid layer is made up of colorful rectangles.</p>
+<p><img src="../../images/d1bcd835e3aa.png" alt="puzzle-grid" loading="lazy"></p>
+<p>When building the game, I walk the puzzle-grid image and keep track of each rectangle.
+This results in a collection of rectangles like this:</p>
+<p><img src="../../images/8bd9f1154214.png" alt="" loading="lazy"></p>
+<p>That’s has invalid rectangles though, which are just the transparent pixels of the image.
+Removing them, we’ve got something like this:</p>
+<p><img src="../../images/d1bcd835e3aa.png" alt="" loading="lazy"></p>
+<p>Overlaying onto the collage, we can then see the sections of each prize that make up the unique puzzles.</p>
+<p><img src="../../images/7f6de7192f1d.png" alt="" loading="lazy"></p>
+<p>With all of those regions figured out, I then crop from the main collage, and point these to their respective prize.</p>
+<p>The plan is to only draw the full section after you complete it.
+I don’t have that working yet though, so I’m just going through each of the sprites and stamping them:</p>
+<p><img src="../../images/9d60906aa978.png" alt="" loading="lazy"></p>
+<p>Next is figuring out the progression through the puzzle segments.
+This is turning out to be a large refactor, but I think it will be well worth it.
+This should help with the sense of progression through the puzzles.</p></article></main>
+  <footer></footer>
+</body>
+</html>
