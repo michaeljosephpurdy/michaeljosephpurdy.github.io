@@ -1,20 +1,6 @@
 # mikepurdy.dev
 
-## Build Setup
+This site is mainly a mirror of my itch.io profile: [purdy.itch.io](https://purdy.itch.io/)
 
-```bash
-# install dependencies
-$ npm install
+Pushing to `master` runs `.github/workflows/build-and-deploy.yml`, which scrapes, builds and publishes `dist/` to the `deploy` branch.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

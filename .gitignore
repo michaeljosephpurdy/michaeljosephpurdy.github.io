@@ -5,3 +5,5 @@ dist
 public
 resources
 archetypes
+.cache
+data/
