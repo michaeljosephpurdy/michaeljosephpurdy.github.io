@@ -1,4 +1,4 @@
-name: Scrape, Build and Deploy
+name: Scrape, build, and prep for deploy
 on:
   push:
     branches:

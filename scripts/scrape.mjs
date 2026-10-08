@@ -1,35 +1,28 @@
 // Scrapes https://purdy.itch.io/ -> data/games/<slug>/{game.json,devlogs/*.json,images/*}
 // itch.io is the source of truth: every run rewrites data/games from scratch.
-// Raw responses are cached in .cache/ (pass --fresh to bypass). Comments are never scraped.
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+// Comments are never scraped.
+import { writeFile, mkdir, rm } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { join, extname } from 'node:path';
 import * as cheerio from 'cheerio';
 
 const PROFILE = 'https://purdy.itch.io/';
 const OUT = 'data/games';
-const CACHE = '.cache/http';
 const DELAY_MS = 1000;
-const FRESH = process.argv.includes('--fresh');
 const ONLY = process.argv.find((a) => a.startsWith('--only='))?.slice(7);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const sha = (s) => createHash('sha1').update(s).digest('hex').slice(0, 12);
 
-// ---- polite, cached fetch -------------------------------------------------
-async function fetchCached(url, { binary = false } = {}) {
-  const path = join(CACHE, sha(url));
-  if (!FRESH && existsSync(path)) return readFile(path).then((b) => (binary ? b : b.toString('utf8')));
+// ---- polite fetch ---------------------------------------------------------
+async function get(url, { binary = false } = {}) {
   await sleep(DELAY_MS);
   const res = await fetch(url, { headers: { 'user-agent': 'Mozilla/5.0 (personal-mirror)' } });
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   const buf = Buffer.from(await res.arrayBuffer());
-  await mkdir(CACHE, { recursive: true });
-  await writeFile(path, buf);
   return binary ? buf : buf.toString('utf8');
 }
-const load = async (url) => cheerio.load(await fetchCached(url));
+const load = async (url) => cheerio.load(await get(url));
 
 // ---- asset + link rewriting -----------------------------------------------
 // `ownSlugs` lets us point links at games/devlogs we mirror; `site:` is resolved by the build.
@@ -40,7 +33,7 @@ function makeRewriter(imagesDir, ownSlugs, devlogSlugById) {
     if (downloaded.has(src)) return downloaded.get(src);
     let name = null;
     try {
-      const buf = await fetchCached(src, { binary: true });
+      const buf = await get(src, { binary: true });
       const ext = (extname(new URL(src).pathname) || '.png').toLowerCase();
       name = `${sha(src)}${ext}`;
       await mkdir(imagesDir, { recursive: true });
@@ -107,7 +100,7 @@ async function scrapeProfile() {
 async function scrapeDevlogIndex(gameUrl) {
   // The devlog RSS feed gives reliable ISO dates; the HTML pages only show relative ones.
   let xml;
-  try { xml = await fetchCached(`${gameUrl}/devlog.rss`); } catch { return []; }
+  try { xml = await get(`${gameUrl}/devlog.rss`); } catch { return []; }
   const $ = cheerio.load(xml, { xmlMode: true });
   return $('item').toArray().map((el) => ({
     url: $(el).find('link').text().trim(),

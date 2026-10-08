@@ -38,8 +38,8 @@ for (const slug of await readdir(DATA)) {
   }
   games.push(game);
 }
-// Most recently updated first. Undated games keep their itch profile order, after the dated ones.
-games.sort((a, b) => (b.updated ?? '').localeCompare(a.updated ?? '') || a.order - b.order);
+// Same order as the itch.io profile.
+games.sort((a, b) => a.order - b.order);
 for (const g of games) g.devlogData.sort((a, b) => b.date.localeCompare(a.date));
 
 await write('index.html', layout({ title: 'Games', root: '', body: indexPage(games) }));
