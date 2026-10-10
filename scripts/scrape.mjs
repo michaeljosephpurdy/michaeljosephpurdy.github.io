@@ -8,22 +8,52 @@ import * as cheerio from 'cheerio';
 
 const PROFILE = 'https://purdy.itch.io/';
 const OUT = 'data/games';
-const DELAY_MS = 1000;
+const DELAY_MS = 2000; // pause before every request; 429s are handled by retry/backoff in get()
 const ONLY = process.argv.find((a) => a.startsWith('--only='))?.slice(7);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const sha = (s) => createHash('sha1').update(s).digest('hex').slice(0, 12);
 
 // ---- polite fetch ---------------------------------------------------------
+const MAX_ATTEMPTS = 5;
+const BACKOFF_MS = 10_000; // doubles each retry: 10s, 20s, 40s, 80s
+
+// Seconds or HTTP-date -> ms, or null if the header is absent/unparseable.
+function retryAfterMs(header) {
+  if (!header) return null;
+  const secs = Number(header);
+  if (Number.isFinite(secs)) return secs * 1000;
+  const date = Date.parse(header);
+  return Number.isNaN(date) ? null : Math.max(0, date - Date.now());
+}
+
 async function get(url, { binary = false } = {}) {
-  await sleep(DELAY_MS);
-  const res = await fetch(url, { headers: {
-      'user-agent': 'Mozilla/5.0 (personal-mirror)',
-      'referrer': 'https://mikepurdy.dev/scraper',
-  } });
-  if (!res.ok) throw new Error(`${res.status} ${url}`);
-  const buf = Buffer.from(await res.arrayBuffer());
-  return binary ? buf : buf.toString('utf8');
+  for (let attempt = 1; ; attempt++) {
+    await sleep(DELAY_MS);
+    let wait = null;
+    let reason;
+    try {
+      const res = await fetch(url, { headers: {
+        // use same user agent as Safari making a request
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15',
+      } });
+      if (res.ok) {
+        const buf = Buffer.from(await res.arrayBuffer());
+        return binary ? buf : buf.toString('utf8');
+      }
+      // Only rate limiting and server errors are worth retrying; 404 and friends are final.
+      if (res.status !== 429 && res.status < 500) throw new Error(`${res.status} ${url}`);
+      reason = String(res.status);
+      wait = retryAfterMs(res.headers.get('retry-after'));
+    } catch (err) {
+      if (/^\d{3} /.test(err.message)) throw err;
+      reason = err.message; // network error: retry too
+    }
+    if (attempt >= MAX_ATTEMPTS) throw new Error(`${reason} ${url} (gave up after ${MAX_ATTEMPTS} attempts)`);
+    wait ??= BACKOFF_MS * 2 ** (attempt - 1);
+    console.warn(`  ! ${reason} for ${url}; retry ${attempt}/${MAX_ATTEMPTS - 1} in ${Math.round(wait / 1000)}s`);
+    await sleep(wait);
+  }
 }
 const load = async (url) => cheerio.load(await get(url));
 
