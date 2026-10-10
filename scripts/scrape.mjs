@@ -17,10 +17,7 @@ const sha = (s) => createHash('sha1').update(s).digest('hex').slice(0, 12);
 // ---- polite fetch ---------------------------------------------------------
 async function get(url, { binary = false } = {}) {
   await sleep(DELAY_MS);
-  const res = await fetch(url, { headers: {
-      'user-agent': 'Mozilla/5.0 (personal-mirror)',
-      'referrer': 'https://mikepurdy.dev/scraper',
-  } });
+  const res = await fetch(url, { headers: { 'user-agent': 'Mozilla/5.0 (personal-mirror)' } });
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   const buf = Buffer.from(await res.arrayBuffer());
   return binary ? buf : buf.toString('utf8');
