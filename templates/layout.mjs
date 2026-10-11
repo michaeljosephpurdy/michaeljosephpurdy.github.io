@@ -15,7 +15,12 @@ export const layout = ({ title, root, body }) => `<!doctype html>
 </head>
 <body>
   <main>${body.replaceAll('href="site:', `href="${root}`)}</main>
-  <footer>my name is mike purdy, here is my <a href="${root}resume.pdf" target="_blank" rel="noopener">resume</a></footer>
+  <footer>
+    <hr>
+    <div>
+      my name is mike purdy, here is my <a href="${root}resume.pdf" target="_blank" rel="noopener">resume</a>
+    </div>
+  </footer>
 </body>
 </html>
 `;
