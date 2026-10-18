@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>007-almost-playable – musings in monograms - mikepurdy.dev</title>
+  <link rel="stylesheet" href="../../../../style.css">
+</head>
+<body>
+  <main>
+<p><a href="../../index.html">back</a></p>
+<h1>007-almost-playable</h1>
+<p><time datetime="2026-10-12">20261012</time> · <a href="https://purdy.itch.io/musings-in-monograms/devlog/1702612/007-almost-playable">original on itch.io</a></p>
+<article><p>In
+<a href="../../../../games/musings-in-monograms/devlog/006-progress-on-collage/index.html">006-progress-on-collage</a>
+and
+<a href="../../../../games/musings-in-monograms/devlog/003-lean-into-it/index.html">003-lean-into-it</a>
+I mentioned that I was planning on showing outlines for each puzzle.
+I think the outlines looked pleasing.</p>
+<p><img src="../../images/ce01c45ae9d9.png" alt="" loading="lazy"></p>
+<p>However, it dawned on me that the outlines would actually be a bit of an issue, because I’d be giving the player a head start on the puzzle.
+They’d know the shape of the puzzle before even opening the puzzle!</p>
+<p>So, I’m changing the approach a little bit.
+Or, not moving forward with the outline work.</p>
+<p>I’ve got this working how I think it should be, where I show a box for every puzzle that the player hasn’t uncovered yet:</p>
+<p><img src="../../images/f986b383d13e.gif" alt="" loading="lazy"></p>
+<p>When you solve a puzzle, the outline won’t show, unless the cursor is over it.
+It also won’t say the prize name <em>until</em> you solve all of puzzles for a given prize!
+Whenever that happens, it’ll animate all sections of the puzzle towards the middle of the screen, display the prize name, then go straight back to the ‘view prize’ state.</p>
+<p><img src="../../images/dcc7b6c398a7.gif" alt="" loading="lazy"></p>
+<p>I’m getting close to publishing a new build of the game to get feedback, but I do do need to iron out some of the puzzles before that.
+Since I changed the idea from ‘solving a portion of the prize’ to ‘solving each piece of the collage’, I now have many puzzles that have more than one solution, which isn’t good.</p>
+<p>I should really take the time and build a solver into my workflow.
+Maybe an Aseprite plugin that does it on save, that would be cool.
+Or I could do it at build time.
+Need to think through the options and weigh each of them.</p></article></main>
+  <footer>
+    <hr>
+    <div>
+      my name is mike purdy, here is my <a href="../../../../resume.pdf" target="_blank" rel="noopener">resume</a>
+    </div>
+  </footer>
+</body>
+</html>

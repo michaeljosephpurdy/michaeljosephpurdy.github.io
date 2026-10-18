@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>008-ensuring-puzzle-solvability – musings in monograms - mikepurdy.dev</title>
+  <link rel="stylesheet" href="../../../../style.css">
+</head>
+<body>
+  <main>
+<p><a href="../../index.html">back</a></p>
+<h1>008-ensuring-puzzle-solvability</h1>
+<p><time datetime="2026-10-16">20261016</time> · <a href="https://purdy.itch.io/musings-in-monograms/devlog/1711488/008-ensuring-puzzle-solvability">original on itch.io</a></p>
+<article><p>It would be a bad experience for players if these puzzles had multiple solutions or if they required guesses.
+It would also be a bad experience if these puzzles either on their own or as a piece in a grouping.
+So, these are the things I need to maximize.</p>
+<p>I’ve been ensuring solvability by actually solving every puzzles.
+That’s enjoyable, but slow, and is not scalable as I build out more puzzles.
+It also doesn’t ensure that puzzles have one solution, since another person, or even another attempt by me, could result in a different solution.</p>
+<p>This project has had me look into other Nonogram games.
+I came across <a href="https://itch.io/post/16718125">this comment</a> by <a href="https://bradenbest.itch.io">@bradenbest</a> on <a href="https://m3zik.itch.io/lx-nonograms">UFO 50 Nonograms</a> that stuck with me:</p>
+<blockquote>
+<p>[…] some nonogram implementations like to check your solution against the map the puzzle was generated from instead of against the hints, resulting in valid solutions being rejected because the puzzle has multiple solutions but the game only accepts one.</p>
+</blockquote>
+<p>I mean, checking against the map the puzzle was generated is exactly what I’m doing.
+I didn’t want to check against the clues though, since I’m trying to make this one big collage and that keeping the continutity of the collage is very important.</p>
+<p>Thinking about this had me thinking through how I could ensure puzzles have unique solutions.</p>
+<hr>
+<p>Of course I started on the <a href="https://en.wikipedia.org/wiki/Nonogram" referrerpolicy="origin" rel="nofollow noopener">Nonogram Wikipedia entry</a>, which has plenty of really good strategies for <em>players</em>, but a limited amount of information on potential algorithms to implement within a solver.</p>
+<blockquote>
+<p>An extensive comparison and discussion of nonogram solving algorithms is found at the WebPBN site (Web Paint-By-Number).
+A nonogram solver written in C++ and published in the journal Pattern Recognition solves lines in quadratic time at most.</p>
+</blockquote>
+<p>That article within Pattern Recognition is called <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320308005153?via%3Dihub" referrerpolicy="origin" rel="nofollow noopener">Solving Nonograms by combining relaxation</a>.
+It’s written by Kees Joost Batenburg and Walter A. Kosters, both of whom hold PhDs in Mathematics.
+I didn’t read this - it’s $30 for the PDF.
+This work has been cited a bunch too, like in <a href="https://www.sciencedirect.com/science/article/pii/S0166218X14000080#br000015" referrerpolicy="origin" rel="nofollow noopener">Nonograms: Combinatorial questions and algorithms</a> and in <a href="https://www.sciencedirect.com/science/article/abs/pii/S009784930700163X" referrerpolicy="origin" rel="nofollow noopener">Automated generation and visualization of picture-logic puzzles</a>.
+Sort of neat there there is are academic articles written about Nonograms.</p>
+<p>The wikipedia mentioned <a href="https://webpbn.com" referrerpolicy="origin" rel="nofollow noopener">WebPBN</a>, which is a site I never heard of but instantly fell in love with.
+What a charming slice of the internet!</p>
+<blockquote>
+<p>Web Paint by Number is an on-line puzzle community where people create and solve a type of Japanese logic puzzle known as nonograms, griddlers, or paint by number puzzles.
+It’s been very successful both as a sophisticated programming project and as a vibrant on-line community.
+That’s straight from Jan Wolter, the sites creator.
+The more I look into this guy, the more I realize that he was completely awesome.
+His personal site <a href="https://unixpapa.com" referrerpolicy="origin" rel="nofollow noopener">unixpapa.com</a>, which is a totally rad domain to have, is totally worth exploring.</p>
+</blockquote>
+<p>He wrote this great page that goes over tips and strategies for creating uniquely solvable puzzles: <a href="https://www.webpbn.com/howto.html" referrerpolicy="origin" rel="nofollow noopener">Advice on How To Create Puzzles</a>.
+He also wrote a bit on solvers: <a href="https://webpbn.com/survey/" referrerpolicy="origin" rel="nofollow noopener">Survey of Paint-by-Number Puzzle Solvers</a>.
+And, he built a really great solver called <a href="https://webpbn.com/pbnsolve.html" referrerpolicy="origin" rel="nofollow noopener">pbnsolve</a>.</p>
+<p><strong>I told you, Jan was the real deal!</strong></p>
+<p>I looked through the README of <code>pbnsolve</code> and saw it accepts Portable BitMap format (<a href="https://en.wikipedia.org/wiki/Netpbm#PBM_example" referrerpolicy="origin" rel="nofollow noopener">PBM wiki</a>).
+I had no clue what the heck this was, but after looking at the format I realized that this is the perfect format to use since it matches so closely to my internal format for puzzles and sprites.
+I’ll go into how the renderer works in a different post, but anything that is not an individual pixel, line, or rectangle, is an <code>RR_Sprite</code>, including the font.
+At a high level: I have a lot of scripts go from <code>PNG</code> to <code>RR_Sprite</code> written directly to <code>.inc</code> files that are <code>#include</code>d directly in the source code.</p>
+<hr>
+<p>Like I talked about in <a href="../../../../games/musings-in-monograms/devlog/005-week-by-week/index.html">005-week-by-week</a>, everything starts in Aseprite.</p>
+<p><img src="../../images/5e66af290093.png" alt="" loading="lazy"></p>
+<p>Let’s look at this puzzle in particular</p>
+<p><img src="../../images/05033afad6f4.png" alt="" loading="lazy"></p>
+<p>This area gets transformed to this struct at build time.</p>
+<pre><code class="language-c">typedef struct PuzzleOnMap {
+  unsigned int puzzle_id;
+  unsigned int prize_id;
+  int x;
+  int y;
+  int width;
+  int height;
+  RR_Sprite sprite;
+} PuzzleOnMap;
+typedef struct RR_Sprite {
+  unsigned int width;
+  unsigned int height;
+  unsigned char data[RR_MAX_SPRITE_WIDTH * RR_MAX_SPRITE_HEIGHT];
+} RR_Sprite;
+</code></pre>
+<p>This is what it looks like in <code>generated_map.inc</code>:</p>
+<pre><code class="language-c">{
+  5,4,155,135,15,15, {
+  15,15,{    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1,2,1,1,1,2,2,2,2,2,1,1,2,2,2,1,2,1,1,1,2,2,2,2,2,1,1,2,2,2,1,2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,1,1,1,1,1,1,1,1,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,2,2,0,0
+}}}
+</code></pre>
+<p>Then I take <code>RR_Sprite</code> data, which is simply <code>0: transparent, 1: white, 2: black</code> and transforming that to <code>PBM</code> format.</p>
+<pre><code class="language-pbm">P1
+15 15
+000000000000000
+111111111111110
+000000000000011
+111111111111111
+110011101000111
+110011101000111
+110011101000111
+000000001000111
+000000001000111
+000000001000111
+111111111000111
+000000001000111
+111111111111111
+111111111111110
+000110000001100
+</code></pre>
+<p>Then using <code>pbnsolve</code> to solve all the puzzles and checking for uniqueness.</p>
+<pre><code>[...]
+for file in build/pbms/*.pbm; do ./pbnsolve -u $file -b; done
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+unique logical
+[...]
+</code></pre>
+<hr>
+<p>Now, thanks to a comment I randomly came across on itch.io, and a powerhouse of a developer named Jan Wolter, I feel good about building a fair Nonogram game and have tooling to keep myself in check.</p></article></main>
+  <footer>
+    <hr>
+    <div>
+      my name is mike purdy, here is my <a href="../../../../resume.pdf" target="_blank" rel="noopener">resume</a>
+    </div>
+  </footer>
+</body>
+</html>
