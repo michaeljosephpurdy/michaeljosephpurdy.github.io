@@ -26,30 +26,30 @@ I came across <a href="https://itch.io/post/16718125">this comment</a> by <a hre
 I didn’t want to check against the clues though, since I’m trying to make this one big collage and that keeping the continutity of the collage is very important.</p>
 <p>Thinking about this had me thinking through how I could ensure puzzles have unique solutions.</p>
 <hr>
-<p>Of course I started on the <a href="https://en.wikipedia.org/wiki/Nonogram" referrerpolicy="origin" rel="nofollow noopener">Nonogram Wikipedia entry</a>, which has plenty of really good strategies for <em>players</em>, but a limited amount of information on potential algorithms to implement within a solver.</p>
+<p>Of course I started on the <a href="https://en.wikipedia.org/wiki/Nonogram" rel="nofollow noopener" referrerpolicy="origin">Nonogram Wikipedia entry</a>, which has plenty of really good strategies for <em>players</em>, but a limited amount of information on potential algorithms to implement within a solver.</p>
 <blockquote>
 <p>An extensive comparison and discussion of nonogram solving algorithms is found at the WebPBN site (Web Paint-By-Number).
 A nonogram solver written in C++ and published in the journal Pattern Recognition solves lines in quadratic time at most.</p>
 </blockquote>
-<p>That article within Pattern Recognition is called <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320308005153?via%3Dihub" referrerpolicy="origin" rel="nofollow noopener">Solving Nonograms by combining relaxation</a>.
+<p>That article within Pattern Recognition is called <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320308005153?via%3Dihub" rel="nofollow noopener" referrerpolicy="origin">Solving Nonograms by combining relaxation</a>.
 It’s written by Kees Joost Batenburg and Walter A. Kosters, both of whom hold PhDs in Mathematics.
 I didn’t read this - it’s $30 for the PDF.
-This work has been cited a bunch too, like in <a href="https://www.sciencedirect.com/science/article/pii/S0166218X14000080#br000015" referrerpolicy="origin" rel="nofollow noopener">Nonograms: Combinatorial questions and algorithms</a> and in <a href="https://www.sciencedirect.com/science/article/abs/pii/S009784930700163X" referrerpolicy="origin" rel="nofollow noopener">Automated generation and visualization of picture-logic puzzles</a>.
+This work has been cited a bunch too, like in <a href="https://www.sciencedirect.com/science/article/pii/S0166218X14000080#br000015" rel="nofollow noopener" referrerpolicy="origin">Nonograms: Combinatorial questions and algorithms</a> and in <a href="https://www.sciencedirect.com/science/article/abs/pii/S009784930700163X" rel="nofollow noopener" referrerpolicy="origin">Automated generation and visualization of picture-logic puzzles</a>.
 Sort of neat there there is are academic articles written about Nonograms.</p>
-<p>The wikipedia mentioned <a href="https://webpbn.com" referrerpolicy="origin" rel="nofollow noopener">WebPBN</a>, which is a site I never heard of but instantly fell in love with.
+<p>The wikipedia mentioned <a href="https://webpbn.com" rel="nofollow noopener" referrerpolicy="origin">WebPBN</a>, which is a site I never heard of but instantly fell in love with.
 What a charming slice of the internet!</p>
 <blockquote>
 <p>Web Paint by Number is an on-line puzzle community where people create and solve a type of Japanese logic puzzle known as nonograms, griddlers, or paint by number puzzles.
 It’s been very successful both as a sophisticated programming project and as a vibrant on-line community.
 That’s straight from Jan Wolter, the sites creator.
 The more I look into this guy, the more I realize that he was completely awesome.
-His personal site <a href="https://unixpapa.com" referrerpolicy="origin" rel="nofollow noopener">unixpapa.com</a>, which is a totally rad domain to have, is totally worth exploring.</p>
+His personal site <a href="https://unixpapa.com" rel="nofollow noopener" referrerpolicy="origin">unixpapa.com</a>, which is a totally rad domain to have, is totally worth exploring.</p>
 </blockquote>
-<p>He wrote this great page that goes over tips and strategies for creating uniquely solvable puzzles: <a href="https://www.webpbn.com/howto.html" referrerpolicy="origin" rel="nofollow noopener">Advice on How To Create Puzzles</a>.
-He also wrote a bit on solvers: <a href="https://webpbn.com/survey/" referrerpolicy="origin" rel="nofollow noopener">Survey of Paint-by-Number Puzzle Solvers</a>.
-And, he built a really great solver called <a href="https://webpbn.com/pbnsolve.html" referrerpolicy="origin" rel="nofollow noopener">pbnsolve</a>.</p>
+<p>He wrote this great page that goes over tips and strategies for creating uniquely solvable puzzles: <a href="https://www.webpbn.com/howto.html" rel="nofollow noopener" referrerpolicy="origin">Advice on How To Create Puzzles</a>.
+He also wrote a bit on solvers: <a href="https://webpbn.com/survey/" rel="nofollow noopener" referrerpolicy="origin">Survey of Paint-by-Number Puzzle Solvers</a>.
+And, he built a really great solver called <a href="https://webpbn.com/pbnsolve.html" rel="nofollow noopener" referrerpolicy="origin">pbnsolve</a>.</p>
 <p><strong>I told you, Jan was the real deal!</strong></p>
-<p>I looked through the README of <code>pbnsolve</code> and saw it accepts Portable BitMap format (<a href="https://en.wikipedia.org/wiki/Netpbm#PBM_example" referrerpolicy="origin" rel="nofollow noopener">PBM wiki</a>).
+<p>I looked through the README of <code>pbnsolve</code> and saw it accepts Portable BitMap format (<a href="https://en.wikipedia.org/wiki/Netpbm#PBM_example" rel="nofollow noopener" referrerpolicy="origin">PBM wiki</a>).
 I had no clue what the heck this was, but after looking at the format I realized that this is the perfect format to use since it matches so closely to my internal format for puzzles and sprites.
 I’ll go into how the renderer works in a different post, but anything that is not an individual pixel, line, or rectangle, is an <code>RR_Sprite</code>, including the font.
 At a high level: I have a lot of scripts go from <code>PNG</code> to <code>RR_Sprite</code> written directly to <code>.inc</code> files that are <code>#include</code>d directly in the source code.</p>
